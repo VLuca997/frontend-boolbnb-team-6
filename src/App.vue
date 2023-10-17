@@ -18,9 +18,9 @@ export default {
 </script>
 
 <template>
-    <HeaderComponent />
-    <MainComponent/>
-    <FooterComponent />
+  <HeaderComponent />
+  <MainComponent/>
+  <FooterComponent />
 </template>
 
 <style lang="scss">
