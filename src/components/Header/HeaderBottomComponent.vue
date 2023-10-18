@@ -54,8 +54,8 @@ export default {
             <h2 class="text-light fw-bold">Scegli il tuo appartamento</h2>
           </div>
           <div class="col py-3">
-            <input class="col" type="text" v-model="rooms">
-            <button @click="searchApartments">Cerca</button>
+            <!-- <input class="col" type="text" v-model="rooms">
+            <button @click="searchApartments">Cerca</button> -->
           </div>
         </div>
       </div>
