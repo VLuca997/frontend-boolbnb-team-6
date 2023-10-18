@@ -62,6 +62,7 @@ export default {
     </section>
 </template>
 <style lang="scss" scoped>
+
 section {
     background-image: url('../../assets/img/city.jpg');
     background-repeat: no-repeat;

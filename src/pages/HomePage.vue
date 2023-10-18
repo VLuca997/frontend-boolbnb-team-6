@@ -1,5 +1,7 @@
 <script>
 
+import TippComponent from '../components/Main/TippComponent.vue';
+import CommentComponent from '../components/Main/CommentComponent.vue';
 import CardComponent from '../components/Main/CardComponent.vue';
 import HeaderBottomComponent from '../components/Header/HeaderBottomComponent.vue';
 
@@ -17,22 +19,53 @@ export default {
     components: {
         CardComponent,
         HeaderBottomComponent,
+        CommentComponent,
+        TippComponent,
     },
 }
 </script>
 
 <template>
+    <!-- HEADER BOTTOM -->
     <HeaderBottomComponent/>
-    <div class="container py-5">
-        <div class="row">
-            <!-- CARD APARTMENT -->
-            <div class="col-3 min_width">
-                <CardComponent />
-            </div>
 
+    <!-- CARD SECTION -->
+    <section>
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-3 min_width">
+                    <CardComponent/>
+                </div>
+                <div class="col-3 min_width">
+                    <CardComponent/>
+                </div>
+                <div class="col-3 min_width">
+                    <CardComponent/>
+                </div>
+                <div class="col-3 min_width">
+                    <CardComponent/>
+                </div>
+                <div class="col-3 min_width">
+                    <CardComponent/>
+                </div>
+            </div>
+        </div> 
+    </section>
+
+    <!-- COMMENT SECTION -->
+    <section>
+        <div class="container py-4 text-center">
+            <CommentComponent/>
         </div>
-        <!-- SEZIONE CARD APPARTAMENTI -->
-    </div> 
+    </section>
+
+    <!-- TIPP: ADD APARTMENT -->
+    <section>
+        <div class="container py-5">
+            <TippComponent/>
+        </div>
+    </section>
+    
 </template>
 
 <style lang="scss" scoped>
