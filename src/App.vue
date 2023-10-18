@@ -25,4 +25,9 @@ export default {
 
 <style lang="scss">
 @use "assets/scss/main.scss";
+
+*{
+ font-family: 'Nunito', sans-serif;
+}
+
 </style>

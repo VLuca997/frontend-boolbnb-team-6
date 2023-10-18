@@ -1,14 +1,34 @@
 <script>
+import CardComponent from './Main/CardComponent.vue';
 // my-component.js
 export default {
+    components: {
+        CardComponent,
+    },
+
     data() {
-    return 
+        return{
+
+        }
     },
 }
 </script>
 
 <template>
-    <h1><strong>Hello Words</strong></h1>
+        <div class="container py-5">
+            <!-- SEZIONE CARD APPARTAMENTI -->
+            <div class="row">
+                <div class="col">
+                    <CardComponent />
+                </div>
+                <div class="col">
+                    <CardComponent />
+                </div>
+                <div class="col">
+                    <CardComponent />
+                </div>
+            </div>
+        </div> 
 </template>
 
 <style lang="scss" scoped>
