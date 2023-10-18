@@ -24,21 +24,29 @@ export default {
 <template>
     <HeaderBottomComponent/>
     <div class="container py-5">
-        <!-- SEZIONE CARD APPARTAMENTI -->
         <div class="row">
-            <div class="col">
+            <!-- CARD APARTMENT -->
+            <div class="col-3 min_width">
                 <CardComponent />
             </div>
-            <div class="col">
-                <CardComponent />
-            </div>
-            <div class="col">
-                <CardComponent />
-            </div>
+
         </div>
+        <!-- SEZIONE CARD APPARTAMENTI -->
     </div> 
 </template>
 
 <style lang="scss" scoped>
+    .min_width{
+        min-width: 300px;
+    }
+
+    @media (min-width: 320px) and (max-width: 480px){
+
+        .min_width{
+            min-width: 300px;
+            margin-left: 15%;
+        }
+
+    }
 
 </style>
