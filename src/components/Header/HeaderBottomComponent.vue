@@ -50,8 +50,8 @@ export default {
     <section>
       <div class="container d-flex justify-content-center align-items-center h-100 ">
         <div class="row flex-column">
-          <div class="col back-drop">
-            <h2 class="text-light fw-bold">Scegli il tuo appartamento</h2>
+          <div class="col">
+            <h2 class="text-light fw-bold back-drop py-4">Scegli il tuo appartamento</h2>
           </div>
           <div class="col py-3">
             <!-- <input class="col" type="text" v-model="rooms">
@@ -63,7 +63,7 @@ export default {
 </template>
 <style lang="scss" scoped>
 section {
-    background-image: url('../../assets/img/bg-home.png');
+    background-image: url('../../assets/img/city.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
