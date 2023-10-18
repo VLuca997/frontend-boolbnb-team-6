@@ -1,10 +1,6 @@
 <script>
 // my-component.js
-export default {
-    data() {
-        return 
-    },
-}
+
 </script>
 
 <template>

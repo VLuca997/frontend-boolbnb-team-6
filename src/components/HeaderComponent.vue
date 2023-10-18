@@ -1,13 +1,15 @@
 <script>
-import HeaderBottomComponent from './Header/HeaderBottomComponent.vue';
-export default {
-  data() {
-    return 
-  },
-  components:{
-    HeaderBottomComponent
-  }
-}
+    export default {
+        name: "HeaderComponent",
+        data() {
+            return {
+
+            }
+        },
+        methods: {
+
+        }
+    }
 </script>
 
 <template>
@@ -28,26 +30,22 @@ export default {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link link-hover" aria-current="page" href="#">Home</a>
+              <router-link class="nav-link link-hover" :to="{name: 'home'}"> Home </router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link link-hover" href="#">Ricerca</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link link-hover" href="#">Dashboard</a>
+              <router-link class="nav-link link-hover" :to="{name: 'search'}"> Ricerca </router-link>
             </li>
           </ul>
-          <a href="#" class="btn btn-outline-warning">
+          <a href="http://127.0.0.1:8000" class="btn btn-outline-warning">
             Accedi
           </a>
-          <a href="#" class="btn btn-outline-success ms-3">
+          <a href="http://127.0.0.1:8000/register" class="btn btn-outline-success ms-3">
             Registrati
           </a>
         </div>
       </div>
     </nav>
   </div>
-  <HeaderBottomComponent />
 </template>
 
 <style lang="scss" >
