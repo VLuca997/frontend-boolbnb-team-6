@@ -98,8 +98,7 @@ export default {
       distance: '20',
       apartments: [],
       address: '',
-      distance: '',
-      size: '',
+      square_meters: null,
       rooms_number: null,
       beds_number: null,
       bathrooms_number: null,
@@ -126,20 +125,16 @@ export default {
             this.latitude = response.data.results[0].position.lat;
             this.longitude = response.data.results[0].position.lon;
 
-            console.log(this.latitude)
-            console.log(this.longitude)
-
-            // Ora che hai le coordinate, effettua la chiamata al backend per cercare gli appartamenti
             return axios.get('http://127.0.0.1:8000/api/search', {
               params: {
                 latitude: this.latitude,
                 longitude: this.longitude,
                 distance: 20,
-                // size: this.size,
-                // rooms: this.rooms,
-                // beds: this.beds,
-                // bathrooms: this.bathrooms,
-                // services: this.selectedServices,
+                square_meters: this.square_meters,
+                rooms_number: this.rooms_number,
+                beds_number: this.beds_number,
+                bathrooms_number: this.bathrooms_number,
+                services: this.selectedServices,
               },
             });
           } else {
@@ -148,14 +143,16 @@ export default {
           }
         })
         .then((response) => {
-            console.log(response)
-          this.apartments = response.data.results;
+            if (response.data.results && response.data.results.length > 0) {
+                this.apartments = response.data.results;
+        } else {
+                this.apartments = [];
+        }
 
-          
-         
         })
         .catch((error) => {
           console.error('Errore nella richiesta:', error);
+
         })
         .finally(() => (this.loading = false));
     },
@@ -163,17 +160,22 @@ export default {
 };
 </script>
 <template>
-    <div class="container  d-flex justify-content-center align-items-center h-100">
-        <div class="d-flex">
-            <input class="form-control mx-2" v-model="address" placeholder="Inserisci un indirizzo" />
+    <div class="container text-center d-flex justify-content-center align-items-center h-100">
+        <div class="row w-75">
+            <input class="form-control my-3 col-12" v-model="address" placeholder="Inserisci un indirizzo" />
 
-            <button class="btn btn-primary" @click="geocodeAndSearch">Cerca</button>
+            <div class="row m-auto w-75">
+            <input class="form-control mx-1 col" v-model="square_meters" placeholder="Metratura" />
+            <input class="form-control mx-1 col" v-model="rooms_number" placeholder="Stanze" />
+            <input class="form-control mx-1 col" v-model="beds_number" placeholder="Letti" />
+            <input class="form-control mx-1 col" v-model="bathrooms_number" placeholder="Bagni" />
+            <!-- <input class="form-control mx-1 col" v-model="services" placeholder="Servizi" /> -->
+            </div>
+            <button class="btn col-6 m-auto my-3 btn-primary" @click="geocodeAndSearch">Cerca</button>
         </div>
-
-       
     </div>
-    <div class="container my-container">
-        <div class="row">
+    <div class="container text-center py-5 my-container">
+        <div class="row"  v-if="apartments.length >= 1">
             <div class="card col-3 my-5"   v-for="apartment in apartments" :key="apartment.id">
                 <img :src="'http://127.0.0.1:8000/storage/'+ apartment.cover_img" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -189,8 +191,11 @@ export default {
                 </div>
             </div>
        </div>
+       <div v-if="apartments.length === 0">
+                Nessun appartamento trovato
+        </div>
     </div>
-    
+
 </template>
 
 <style lang="scss" scoped>
