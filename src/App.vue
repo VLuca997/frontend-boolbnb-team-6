@@ -3,17 +3,42 @@
 import HeaderComponent from './components/HeaderComponent.vue';
 import FooterComponent from './components/FooterComponent.vue';
 import axios from 'axios';
+import { store } from './store.js';
 
 
 
 // my-component.js
 export default {
-  
-  components:{
+
+    data() {
+        return {
+            store
+        };
+    },
+
+    components:{
     
-    HeaderComponent,
-    FooterComponent
-}
+        HeaderComponent,
+        FooterComponent,
+    },
+
+    methods: {
+        getResults() {
+            axios
+                .get('http://127.0.0.1:8000/api/apartments', {
+                    
+                })
+                .then(response => {
+                    this.store.aparments = response.data.results;
+                })
+                .catch(error => {
+                    this.store.aparments = [];
+                });
+        },     
+    },
+    created() {
+        this.getResults();
+    }
 }
 </script>
 

@@ -5,6 +5,8 @@ import CommentComponent from '../components/Main/CommentComponent.vue';
 import CardComponent from '../components/Main/CardComponent.vue';
 import HeaderBottomComponent from '../components/Header/HeaderBottomComponent.vue';
 
+import { store } from '../store.js';
+
 // my-component.js
 export default {
 
@@ -12,7 +14,7 @@ export default {
 
     data() {
         return{
-            ciao:'',
+            store,
         }
     },
     
@@ -34,19 +36,7 @@ export default {
         <div class="container py-4">
             <div class="row">
                 <div class="col-3 min_width">
-                    <CardComponent/>
-                </div>
-                <div class="col-3 min_width">
-                    <CardComponent/>
-                </div>
-                <div class="col-3 min_width">
-                    <CardComponent/>
-                </div>
-                <div class="col-3 min_width">
-                    <CardComponent/>
-                </div>
-                <div class="col-3 min_width">
-                    <CardComponent/>
+                    <CardComponent :apartments="[]"/>
                 </div>
             </div>
         </div> 

@@ -2,10 +2,34 @@
 
 export default {
     data() {
-    	return 
+    	return{
+            
+        } 
     },
+
+    props: {
+        apartments: {
+            type: Object,
+            default: {
+                title: '',
+                address: '',
+                cover_img: '',
+                price_per_night: '',
+            }
+        }
+    }
 }
 </script>
+
+<script setup>
+    defineProps({
+        title: String,
+        address: String,
+        cover_img: String,
+        price_per_night: Number,
+    })
+</script>
+
 
 <template>
     <div class="position-relative mobile_size">
@@ -14,10 +38,10 @@ export default {
             <img src="/src/assets/img/cover1.jpg" class="img-card rounded d-block shadoww_img" alt="...">
         </a>
         <!-- CONTAINER INFO -->
-        <div class="container_ position_container p-2 rounded shadoww_container">
+        <div class="container_ position_container p-2 rounded shadoww_container" v-for="apartments in apartment" :key="apartments.id">
             <p class="fst-italic">Via Roma, 34, <strong>Roma</strong> </p>
             <p class="position_price style_price p-1">300€ /N</p>
-            <h5>Titolo appartamento</h5>
+            <h5>{{ apartment.title }}</h5>
             <hr>
             <div class="info">
                 <p><i class="fa-solid fa-door-open"></i> Stanze: 2 <span class="ps-2"><i class="fa-solid fa-maximize"></i> M²: 50</span></p> 
