@@ -40,7 +40,7 @@
             </div>
         </div>
 
-        <p class="text-white opacity-75"> <i class="fa-regular fa-copyright"></i> Copyright 2023, Immobiliaria BoolBnB Srl. Tutti i diritti riservati </p>
+        <p class="text-white opacity-75 m-0"> <i class="fa-regular fa-copyright"></i> Copyright 2023, Immobiliaria BoolBnB Srl. Tutti i diritti riservati </p>
 
     </div>     
 </template>
