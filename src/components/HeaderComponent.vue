@@ -19,7 +19,7 @@
         <a class="navbar-brand p-0" href="#">
           <div class="d-flex align-items-center">
             <img src="src/assets/img/logo-header.svg" alt="" class="img-header">
-            <h2 class="px-3">
+            <h2 class="px-3 bg_logo shadoww">
               Bool BNB
             </h2>
           </div>
@@ -30,10 +30,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <router-link class="nav-link link-hover" :to="{name: 'home'}"> Home </router-link>
+              <router-link class="nav-link link-hover fs-5" :to="{name: 'home'}"> Home </router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link link-hover" :to="{name: 'search'}"> Ricerca </router-link>
+              <router-link class="nav-link link-hover fs-5" :to="{name: 'search'}"> Ricerca </router-link>
             </li>
           </ul>
           <a href="http://127.0.0.1:8000" class="btn btn-outline-warning">
@@ -57,7 +57,20 @@
 }
 .nav-item:hover {
   a {
-    color: orangered;
+    text-decoration: none;
+    color: #F6AE2D;
   }
 }
+
+.bg_logo{
+    background-color: #F6AE2D;
+    color: white;
+    border: 1px solid #FFCA2C;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 10px;
+    margin-left: 5px;
+    
+}
+
 </style>
