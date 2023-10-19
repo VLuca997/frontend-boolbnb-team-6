@@ -1,92 +1,3 @@
-<!-- <script>
-
-
-import axios from 'axios';
-
-export default {
-    mounted() {
-    },
-    data() {
-        return {
-            latitude: null,
-            longitude: null,
-            distance: 20,
-            apartments: [],
-            address: '',
-            distance: '',
-            size: '',
-            rooms_number:null,
-            beds_number:null,
-            bathrooms_number:null,
-            services:'',
-            loading: false,
-            apiKey: 'BxLvW0WHQgAEf3K4FogUXlvUV2qjlM8J',
-        };
-    },
-    computed () {
-        this.searchApartments();
-    },
-
-    methods: {
-
-    geocodeAddress() {
-        const url = `https://api.tomtom.com/search/2/geocode/${this.address}.json`;
-        const params = {
-            key: this.apiKey,
-            limit: 1,
-        };
-
-        axios
-            .get(url, { params })
-
-            .then(response => {
-            if (response.data.results.length > 0) {
-                this.latitude = response.data.results[0].position.lat;
-                this.longitude = response.data.results[0].position.lon;
-
-                getFilteredApartments(event) {
-      this.loading = true;
-      if (!this.validateForm()) {
-        event.preventDefault();
-      } else {
-            axios
-            .get("http://127.0.0.1:8000/api/search", {
-                params: {
-                    latitude: this.latitude,
-                    longitude: this.longitude,
-                    distance: this.distance,
-                    size: this.size,
-                    rooms: this.rooms,
-                    beds: this.beds,
-                    bathrooms: this.bathrooms,
-                    services: this.selectedServices,
-                },
-            })
-            .then((response) => {
-                this.apartments = response.data.results;
-                console.log(this.apartments)
-            })
-            .catch((error) => {
-                console.error("Request failed:", error);
-            })
-            .finally(() => (this.loading = false));
-        }
-    }
-
-            } else {
-                this.coordinates = null;
-            }
-            })
-            .catch(error => {
-            console.error('Errore nella richiesta di geocodifica:', error);
-            });
-    },
-
-
-
-    }}
-</script> -->
-
 <script>
 import axios from 'axios';
 
@@ -148,7 +59,6 @@ export default {
         } else {
                 this.apartments = [];
         }
-
         })
         .catch((error) => {
           console.error('Errore nella richiesta:', error);
