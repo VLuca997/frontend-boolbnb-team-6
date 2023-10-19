@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios';
 import { store } from '../store.js'; 
+import CardComponent from '../components/Main/CardComponent.vue';
 
 export default {
     data() {
@@ -32,7 +33,10 @@ export default {
             }
         };
     },
-
+    
+    components: {
+        CardComponent,
+    },
     mounted() {
 
         const tom = this.$refs.searchBoxContainer;
@@ -200,27 +204,25 @@ export default {
     
     <div class="container text-center py-5 my-container">
         <div class="row"  v-if="store.apartments.length >= 1">
-            <div class="card col-3 my-5"   v-for="apartment in store.apartments" :key="apartment.id">
-                <img :src="'http://127.0.0.1:8000/storage/'+ apartment.cover_img" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text">
-                        {{ apartment.title }}
-                    </p>
-                    <h6>
-                        {{ apartment.address }}
-                    </h6>
-                    <h6>
-                        {{ apartment.price_per_night }}
-                    </h6>
-                </div>
+            <div class="col-3" v-for="apartment in store.apartments" :key="apartment.id">
+                <CardComponent
+                :title="apartment.title"
+                :price_per_night="apartment.price_per_night"
+                :rooms_number="apartment.rooms_number"
+                :beds_number="apartment.beds_number"
+                :bathrooms_number="apartment.bathrooms_number"
+                :square_meters="apartment.square_meters"
+                :address="apartment.address"
+                :cover_img="apartment.cover_img"
+                :description="apartment.description"
+            />
             </div>
-       </div>
+        </div>
        <div v-if="store.apartments.length === 0">
                 Nessun appartamento trovato
         </div>
     </div>
-
-
+    
 </template>
 
 <style lang="scss" scoped>

@@ -1,5 +1,5 @@
 <script>
-
+import axios from 'axios';
 import TippComponent from '../components/Main/TippComponent.vue';
 import CommentComponent from '../components/Main/CommentComponent.vue';
 import CardComponent from '../components/Main/CardComponent.vue';
@@ -12,7 +12,7 @@ export default {
 
     data() {
         return{
-            ciao:'',
+            allApartments: [],
         }
     },
     
@@ -22,6 +22,25 @@ export default {
         CommentComponent,
         TippComponent,
     },
+
+    created() {
+        this.getAllApartments();
+    },
+
+    methods: {
+
+        //Prenti tutti appartamenti
+        getAllApartments() {
+
+            axios.get('http://127.0.0.1:8000/api/apartments')
+                .then((response) => {
+                    this.allApartments = response.data.results; 
+                })
+                .catch((error) => {
+                    console.error('Errore nella richiesta:', error);
+                });
+        },
+    }
 }
 </script>
 
@@ -32,23 +51,39 @@ export default {
     <!-- CARD SECTION -->
     <section>
         <div class="container py-4">
+            <!-- <div class="row">
+                <div class="col-3 min_width">
+                    <CardComponent/>
+                </div>
+                <div class="col-3 min_width">
+                    <CardComponent/>
+                </div>
+                <div class="col-3 min_width">
+                    <CardComponent/>
+                </div>
+                <div class="col-3 min_width">
+                    <CardComponent/>
+                </div>
+                <div class="col-3 min_width">
+                    <CardComponent/>
+                </div>
+            </div> -->
+
             <div class="row">
-                <div class="col-3 min_width">
-                    <CardComponent/>
-                </div>
-                <div class="col-3 min_width">
-                    <CardComponent/>
-                </div>
-                <div class="col-3 min_width">
-                    <CardComponent/>
-                </div>
-                <div class="col-3 min_width">
-                    <CardComponent/>
-                </div>
-                <div class="col-3 min_width">
-                    <CardComponent/>
-                </div>
+            <div class="col-3" v-for="apartment in this.allApartments" :key="apartment.id">
+                <CardComponent
+                :title="apartment.title"
+                :price_per_night="apartment.price_per_night"
+                :rooms_number="apartment.rooms_number"
+                :beds_number="apartment.beds_number"
+                :bathrooms_number="apartment.bathrooms_number"
+                :square_meters="apartment.square_meters"
+                :address="apartment.address"
+                :cover_img="apartment.cover_img"
+                :description="apartment.description"
+            />
             </div>
+        </div>
         </div> 
     </section>
 

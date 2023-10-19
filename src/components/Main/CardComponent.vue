@@ -2,8 +2,22 @@
 
 export default {
     data() {
-    	return{} 
+    	return{
+
+        }
+        
     },
+    props: {
+        title: String,
+        price_per_night: String,
+        rooms_number: String,
+        beds_number: String,
+        bathrooms_number: String,
+        square_meters: String,
+        address: String,
+        cover_img: String,
+        description: String,
+    }
 }
 </script>
 
@@ -11,17 +25,17 @@ export default {
     <div class="position-relative mobile_size">
         <!-- IMG -->
         <a href="#">
-            <img src="/src/assets/img/cover1.jpg" class="img-card rounded d-block shadoww_img" alt="...">
+            <img :src="'http://127.0.0.1:8000/storage/'+ cover_img " class="img-card rounded d-block shadoww_img" alt="...">
         </a>
         <!-- CONTAINER INFO -->
         <div class="container_ position_container p-2 rounded shadoww_container">
-            <p class="fst-italic">Via Roma, 34, <strong>Roma</strong> </p>
-            <p class="position_price style_price p-1">300€ /N</p>
-            <h5>Titolo appartamento</h5>
+            <p class="fst-italic">{{ address }} </p>
+            <p class="position_price style_price p-1">{{price_per_night}}€ /N</p>
+            <h5>{{ title }}</h5>
             <hr>
             <div class="info">
-                <p><i class="fa-solid fa-door-open"></i> Stanze: 2 <span class="ps-2"><i class="fa-solid fa-maximize"></i> M²: 50</span></p> 
-                <p><i class="fa-solid fa-bed"></i> Letti: 4 <span class="ps-3"><i class="fa-solid fa-bath"></i> Bagni: 1</span></p>
+                <p><i class="fa-solid fa-door-open"></i> Stanze: {{ rooms_number }} <span class="ps-2"><i class="fa-solid fa-maximize"></i> M²: {{ square_meters }}</span></p> 
+                <p><i class="fa-solid fa-bed"></i> Letti: {{ beds_number }} <span class="ps-3"><i class="fa-solid fa-bath"></i> Bagni: {{ bathrooms_number }}</span></p>
             </div>
         </div>
     </div>                                    
