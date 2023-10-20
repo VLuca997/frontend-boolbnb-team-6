@@ -36,7 +36,7 @@ export default {
                         //console.log(res)
                         if (res.data.success) {
                             this.apartment = res.data.results;
-                            console.log(this.apartment)
+                            // console.log(this.apartment)
                         }
                         this.loading = false;
                     })
@@ -182,7 +182,7 @@ export default {
             <h5 class="pb-2" id="services">
                 Servizi Disponibili
             </h5>
-            <div class="col-6" v-for="service in apartment.services" key="service.id">
+            <div class="col-6" v-for="service in apartment.services" :key="service.id">
                 <div class="icon d-inline-block">
                     <i class="p-2" :class="service.icon"></i>
                 </div>
