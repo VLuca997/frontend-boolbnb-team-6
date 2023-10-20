@@ -126,7 +126,7 @@ section {
     background-position: center;
     background-size: cover;
     object-fit: fill;
-    height: 75vh;
+    height: calc(100vh - 70px);
 }
 .col {
     h2 {

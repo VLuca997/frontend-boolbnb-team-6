@@ -9,6 +9,7 @@ export default {
     },
     props: {
         title: String,
+        slug: String,
         price_per_night: Number,
         rooms_number: Number,
         beds_number: Number,
@@ -25,8 +26,9 @@ export default {
     
     <div class="position-relative mobile_size">
         <!-- IMG -->
+        <router-link :to="{name: 'apartment', params: {slug:slug}}">
             <img :src="'http://127.0.0.1:8000/storage/'+ cover_img " class="img-card rounded d-block shadoww_img" alt="...">
-            
+        </router-link> 
         <!-- CONTAINER INFO -->
         <div class="container_ position_container p-2 rounded shadoww_container">
             <p class="fst-italic">{{ address }} </p>

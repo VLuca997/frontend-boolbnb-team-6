@@ -19,9 +19,9 @@
                 </div>
                 <!-- SEZIONE CENTRALE -->
                 <div class="col-6 d-flex justify-content-center">
-                    
+
                     <img class="logo-footer" src="/src/assets/img/logo_white.png" alt="">
-                    
+
                 </div>
                 <!-- SEZIONE SOCIAL -->
                 <div class="col-3 d-flex justify-content-between pt-4">
@@ -42,14 +42,13 @@
 
         <p class="mb-0 text-white opacity-75"> <i class="fa-regular fa-copyright"></i> Copyright 2023, Immobiliaria BoolBnB Srl. Tutti i diritti riservati </p>
 
-    </div>     
+    </div>
 </template>
 
 <style lang="scss" >
 
     .logo-footer{
-        height: 200px;
-        width: 200px;
+        width: 50%;
     }
 
     ul{

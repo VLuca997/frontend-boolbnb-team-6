@@ -20,7 +20,7 @@ export default {
 <template>
   <HeaderComponent />
   <router-view></router-view>
-  <FooterComponent />
+  <!-- <FooterComponent />  -->
 </template>
 
 <style lang="scss">

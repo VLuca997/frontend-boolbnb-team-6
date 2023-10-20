@@ -52,6 +52,11 @@ export default {
 
     <div v-if="apartment">
         <h1>{{ apartment.title }}</h1>
+        <ul v-for="service in apartment.services">
+            <li>
+                {{ service.name }}
+            </li>
+        </ul>
     </div>
     <div v-else>
         Non trovato
