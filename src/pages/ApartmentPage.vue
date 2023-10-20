@@ -105,7 +105,7 @@ export default {
                 </ul>
             </div>
             <div class="col-6 text-end">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Scrivimi un messaggio</button>
+                <button type="button" class="message_btn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Scrivimi un messaggio</button>
             </div>
         </div>
 
@@ -115,24 +115,24 @@ export default {
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Nuovo Messaggio</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
                     <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Recipient:</label>
+                        <label for="recipient-name" class="col-form-label">Oggetto:</label>
                         <input type="text" class="form-control" id="recipient-name">
                     </div>
                     <div class="mb-3">
-                        <label for="message-text" class="col-form-label">Message:</label>
+                        <label for="message-text" class="col-form-label">Messaggio:</label>
                         <textarea class="form-control" id="message-text"></textarea>
                     </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Send message</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                    <button type="button" class="btn btn-primary">Invia Messaggio</button>
                 </div>
                 </div>
             </div>
@@ -215,7 +215,6 @@ export default {
     
 
     .cover_img {
-        border: 2px solid black;
         width: 50%;
 
         img {
@@ -245,6 +244,15 @@ export default {
         span {
             margin-left: 10px;
         }
+    }
+
+    .message_btn{
+        background-color: #F6AE2D;
+        border: 2px solid #F6AE2D;
+        border-top-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        padding: 10px;
+        font-size: 15px;
     }
 
 </style>
