@@ -118,8 +118,8 @@ export default {
             })
                 .then((response) => {
                 if (response.data.results && response.data.results.length > 0) {
+                    
                     store.apartments = response.data.results;
-                    console.log(this.apartments);
                 }
                 else {
                     store.apartments = [];
