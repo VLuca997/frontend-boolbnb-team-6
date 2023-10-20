@@ -88,6 +88,7 @@ export default {
             <div class="col cover_img">
                 <img :src="'http://127.0.0.1:8000/storage/'+ apartment.cover_img " alt="Cover img">
             </div>
+
             <div class="col-6 row picture_img">
                 <div v-for="picture in apartment.pictures" :key="picture.id" class="col-6 single_picture">
                     <img :src="'http://127.0.0.1:8000/storage/'+ picture.img_url " alt="">
@@ -206,22 +207,32 @@ export default {
         color: black;
     }
 
-    img {
-        width: 200px;
-        height: 200px;
-    }
+    
 
     .cover_img {
         border: 2px solid black;
+        width: 50%;
+
+        img {
+        width: 100%;
+        object-fit: cover;
+        }
     }
 
     .picture_img {
-        border: 2px solid red;
-        background-color: rgb(119, 255, 0);
+        // img {
+        // width: 100%;
+        // object-fit: cover;
+        // }
         
 
         .single_picture {
-            border: 1px dashed blue;
+            max-height: 200px;
+            img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            }
         }
     }
 
