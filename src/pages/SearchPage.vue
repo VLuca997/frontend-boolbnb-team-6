@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { store } from '../store.js'; 
 import CardComponent from '../components/Main/CardComponent.vue';
+import LoaderComponent from '../components/LoaderComponent.vue';
 
 export default {
     data() {
@@ -36,6 +37,7 @@ export default {
     
     components: {
         CardComponent,
+        LoaderComponent
     },
     mounted() {
 
@@ -120,9 +122,11 @@ export default {
                 if (response.data.results && response.data.results.length > 0) {
                     
                     store.apartments = response.data.results;
+                    this.loading = false;
                 }
                 else {
                     store.apartments = [];
+                    this.loading = false;
                 }
             })
                 .catch((error) => {
@@ -204,9 +208,10 @@ export default {
     
     <div class="container text-center py-5 my-container">
         <div class="row"  v-if="store.apartments.length >= 1">
-            <div class="col-3" v-for="apartment in store.apartments" :key="apartment.id">
+            <div class="col-sm-12 col-md-6 col-lg-3" v-for="apartment in store.apartments" :key="apartment.id">
                 <CardComponent
                 :title="apartment.title"
+                :slug="apartment.slug"
                 :price_per_night="parseFloat(apartment.price_per_night)"
                 :rooms_number="parseFloat(apartment.rooms_number)"
                 :beds_number="parseFloat(apartment.beds_number)"
@@ -216,11 +221,13 @@ export default {
                 :cover_img="apartment.cover_img"
                 :description="apartment.description"
             />
-            <router-link :to="{name: 'apartment', params: {slug:apartment.slug}}"> Vedi </router-link> 
             </div>
         </div>
-       <div v-if="store.apartments.length === 0">
-                Nessun appartamento trovato
+       <div v-if="store.apartments.length === 0 && !loading">
+                Nessun appartamento trovato!
+        </div>
+        <div v-if="loading">
+                <LoaderComponent/>
         </div>
     </div>
     
