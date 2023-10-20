@@ -3,6 +3,7 @@ import {createRouter, createWebHistory} from "vue-router";
 import HomePage from './pages/HomePage.vue';
 import SearchPage from './pages/SearchPage.vue';
 import ApartmentPage from './pages/ApartmentPage.vue';
+import SponsorPage from './pages/SponsorPage.vue';
 import NotFoundPage from './pages/NotFoundPage.vue';
 
 const router = createRouter({
@@ -28,6 +29,11 @@ const router = createRouter({
         path: '/:pathMatch(.*)*',
         name: 'notfound',
         component: NotFoundPage,
+        },
+        {
+        path: '/sponsor',
+        name: 'sponsor',
+        component: SponsorPage,
         }
     ],
 });
