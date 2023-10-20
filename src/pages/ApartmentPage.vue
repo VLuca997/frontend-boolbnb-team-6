@@ -82,14 +82,16 @@ export default {
 
     <div class="container">
 
-        <h1>{{ apartment.title }}</h1>
+        <h1 class="py-3">
+            {{ apartment.title }}
+        </h1>
 
         <div class="row images-container">
-            <div class="col cover_img">
+            <div class="col-sm-12 col-lg-6 cover_img">
                 <img :src="'http://127.0.0.1:8000/storage/'+ apartment.cover_img " alt="Cover img">
             </div>
 
-            <div class="col-6 row picture_img">
+            <div class="col-sm-12 col-lg-6 row picture_img">
                 <div v-for="picture in apartment.pictures" :key="picture.id" class="col-6 single_picture">
                     <img :src="'http://127.0.0.1:8000/storage/'+ picture.img_url " alt="">
                 </div>
@@ -99,9 +101,10 @@ export default {
         <div class="row">
             <div class="col-6">
                 <ul>
-                    <li class="d-inline-block p-2"><a href="#">Descrizione</a></li>
-                    <li class="d-inline-block p-2"><a href="#">Dettagli appartamento</a></li>
-                    <li class="d-inline-block p-2"><a href="#">Servizi</a></li>
+                    <li class="d-inline-block p-2"><a href="#description">Descrizione</a></li>
+                    <li class="d-inline-block p-2"><a href="#details">Dettagli appartamento</a></li>
+                    <li class="d-inline-block p-2"><a href="#services">Servizi</a></li>
+                    <li class="d-inline-block p-2"><a href="#position">Posizione</a></li>
                 </ul>
             </div>
             <div class="col-6 text-end">
@@ -142,9 +145,11 @@ export default {
 
         <hr>
 
-        <div class="row">
+        <div class="row py-3">
             <div class="col">
-                <h5>Descrizione</h5>
+                <h5 class="pb-2" id="description">
+                    Descrizione
+                </h5>
                 <p>
                     {{ apartment.description }}
                 </p>
@@ -153,28 +158,34 @@ export default {
 
         <hr>
 
-        <div class="row">
-            <h5>Dettagli Appartamento</h5>
+        <div class="row py-3">
+            <h5 class="pb-2" id="details">
+                Dettagli Appartamento
+            </h5>
             <div class="col-3">
-                <span><i class="fa-solid fa-bath"></i></span> 
+                <span class="p-2"><i class="fa-solid fa-bath"></i></span> 
                 Bagni: {{ apartment.bathrooms_number }}</div>
             <div class="col-3">
-                <span><i class="fa-solid fa-bed"></i></span> 
+                <span class="p-2"><i class="fa-solid fa-bed"></i></span> 
                 Letti: {{ apartment.beds_number }}</div>
             <div class="col-3">
-                <span><i class="fa-solid fa-door-open"></i></span> 
+                <span class="p-2"><i class="fa-solid fa-door-open"></i></span> 
                 Stanze: {{ apartment.rooms_number }}</div>
             <div class="col-3">
-                <span><i class="fa-solid fa-maximize"></i></span> 
+                <span class="p-2"><i class="fa-solid fa-maximize"></i></span> 
                 Metri Quadri: {{ apartment.square_meters }}</div>
         </div>
 
         <hr>
 
-        <div class="row servizi">
-            <h5>Servizi Disponibili</h5>
+        <div class="row py-3">
+            <h5 class="pb-2" id="services">
+                Servizi Disponibili
+            </h5>
             <div class="col-6" v-for="service in apartment.services" key="service.id">
-                <i :class="service.icon"></i>
+                <div class="icon d-inline-block">
+                    <i class="p-2" :class="service.icon"></i>
+                </div>
                 <span>{{ service.name }}</span>
             </div>
 
@@ -182,11 +193,13 @@ export default {
 
         <hr>
 
-        <div class="row">
-            <h5>Posizione Appartamento</h5>
-            <div class="col mb-4">
+        <div class="row py-3">
+            <h5 class="pb-4" id="position">
+                Posizione Appartamento
+            </h5>
+            <!-- <div class="col mb-4">
                 <img src="https://www.centrostoricocb.it/immagini/IMM/pianta-borgo%20900.jpg" alt="">
-            </div>
+            </div> -->
         </div>
 
 
@@ -208,12 +221,30 @@ export default {
 
 <style lang="scss" scoped>
 
-    ul > li > a {
-        color: black;
-    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-    
-
+    ul{
+        margin-bottom: 0;
+        padding: 10px 0px;
+        li {
+            margin-right: 5px;
+            font-size: 15px;
+            a {
+            color: black;
+            padding: 2px 5px;
+            border-radius: 10px;
+            transition: 0.3s;
+            &:hover {
+                background-color: #F6AE2D;
+            }
+            } 
+            
+        }
+    } 
     .cover_img {
         width: 50%;
 
@@ -222,29 +253,13 @@ export default {
         object-fit: cover;
         }
     }
-
-    .picture_img {
-        // img {
-        // width: 100%;
-        // object-fit: cover;
-        // }
-        
-
         .single_picture {
             max-height: 200px;
             img {
             width: 100%;
-            max-height: 200px;
             object-fit: cover;
             }
         }
-    }
-
-    .servizi {
-        span {
-            margin-left: 10px;
-        }
-    }
 
     .message_btn{
         background-color: #F6AE2D;
@@ -253,6 +268,17 @@ export default {
         border-bottom-right-radius: 10px;
         padding: 10px;
         font-size: 15px;
+        box-shadow: 5px 5px 5px lightgrey;
+        transition: .3s;
+
+        &:hover {
+            scale: 1.1;
+            box-shadow: 5px 5px 8px grey;
+        }
+    }
+
+    .icon {
+        width: 40px;
     }
 
 </style>
