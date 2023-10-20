@@ -3,6 +3,8 @@ import axios from 'axios';
 import { store } from '../store.js'; 
 import CardComponent from '../components/Main/CardComponent.vue';
 import LoaderComponent from '../components/LoaderComponent.vue';
+import tt from "@tomtom-international/web-sdk-maps";
+import "@tomtom-international/web-sdk-maps";
 
 export default {
     data() {

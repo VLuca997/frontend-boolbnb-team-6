@@ -174,9 +174,9 @@ export default {
 
         <div class="row py-3">
             <div class="col">
-                <h5 class="pb-2" id="description">
+                <h4 class="pb-2" id="description">
                     Descrizione
-                </h5>
+                </h4>
                 <p>
                     {{ apartment.description }}
                 </p>
@@ -186,9 +186,9 @@ export default {
         <hr>
 
         <div class="row py-3">
-            <h5 class="pb-2" id="details">
+            <h4 class="pb-2" id="details">
                 Dettagli Appartamento
-            </h5>
+            </h4>
             <div class="col-3">
                 <span class="p-2"><i class="fa-solid fa-bath"></i></span> 
                 Bagni: {{ apartment.bathrooms_number }}</div>
@@ -206,9 +206,9 @@ export default {
         <hr>
 
         <div class="row py-3">
-            <h5 class="pb-2" id="services">
+            <h4 class="pb-2" id="services">
                 Servizi Disponibili
-            </h5>
+            </h4>
             <div class="col-6" v-for="service in apartment.services" key="service.id">
                 <div class="icon d-inline-block">
                     <i class="p-2" :class="service.icon"></i>
@@ -221,10 +221,11 @@ export default {
         <hr>
 
         <div class="row py-3">
-            <h5 class="pb-4" id="position">
+            <h4 class="pb-4" id="position">
                 Posizione Appartamento
-            </h5>
+            </h4>
             <MapComponent/>
+            <h4 class="py-3">{{ apartment.address }}</h4>
             <!-- <div class="col mb-4">
                 <img src="https://www.centrostoricocb.it/immagini/IMM/pianta-borgo%20900.jpg" alt="">
             </div> -->
