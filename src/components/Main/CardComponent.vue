@@ -25,7 +25,7 @@ export default {
     
     <div class="position-relative mobile_size">
         <!-- IMG -->
-            <img :src="'http://127.0.0.1:8000/storage/'+ cover_img " class="img-card rounded d-block shadoww_img" alt="...">
+            <img :src="'http://127.0.0.1:8000/storage/'+ cover_img " class="img-card rounded d-block" alt="...">
             
         <!-- CONTAINER INFO -->
         <div class="container_ position_container p-2 rounded shadoww_container">
@@ -49,9 +49,9 @@ export default {
     //  box-shadow: 0px 5px 5px 3px rgb(0, 0, 0, .5);
     //  }
 
-    //  .shadoww_container{
-    //  box-shadow: 0px 5px 5px 3px rgb(0, 0, 0, .5);
-    //  }
+     .shadoww_container{
+     box-shadow: 0px 5px 5px 3px rgb(0, 0, 0, .5);
+     }
 
     //  .shadoww_img:hover{
     //  box-shadow: 0px 5px 5px 5px rgb(0, 0, 0, .5);
@@ -75,6 +75,7 @@ export default {
     .container_{
         width: 80%;
         background-color: white;
+        // border: 1px solid lightgray;
     }
 
     .position_container{
