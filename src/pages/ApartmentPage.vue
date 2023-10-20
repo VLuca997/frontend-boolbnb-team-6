@@ -50,7 +50,12 @@ export default {
 
 <template>
 
-    <h1>{{ apartment.title }}</h1>
+    <div v-if="apartment">
+        <h1>{{ apartment.title }}</h1>
+    </div>
+    <div v-else>
+        Non trovato
+    </div>
     
 </template>
 
