@@ -11,7 +11,7 @@ export default {
       store,
     };
   },
-
+    //   FUNZIONE PER RECUPERARE LA LONGITUDINE E LATITUDINE DA INSERIRE NELLA FUNZIONE CHE FA APPARIRE LA MAPPA
   mounted() {
     this.map = null;
 
@@ -35,7 +35,6 @@ export default {
 
           this.map.on("load", () => {
             let marker = new tt.Marker().setLngLat(center).addTo(this.map);
-            console.log(marker)
           });
         } else {
           console.error(
