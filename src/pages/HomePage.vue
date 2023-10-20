@@ -51,24 +51,6 @@ export default {
     <!-- CARD SECTION -->
     <section>
         <div class="container py-4">
-            <!-- <div class="row">
-                <div class="col-3 min_width">
-                    <CardComponent/>
-                </div>
-                <div class="col-3 min_width">
-                    <CardComponent/>
-                </div>
-                <div class="col-3 min_width">
-                    <CardComponent/>
-                </div>
-                <div class="col-3 min_width">
-                    <CardComponent/>
-                </div>
-                <div class="col-3 min_width">
-                    <CardComponent/>
-                </div>
-            </div> -->
-
             <div class="row">
             <div class="col-3" v-for="apartment in this.allApartments" :key="apartment.id">
                 <CardComponent
