@@ -81,8 +81,10 @@ export default {
                 :address="apartment.address"
                 :cover_img="apartment.cover_img"
                 :description="apartment.description"
-            />
+                /> 
+                <router-link :to="{name: 'apartment', params: {slug:apartment.slug}}"> Vedi </router-link> 
             </div>
+            
         </div>
         </div> 
     </section>

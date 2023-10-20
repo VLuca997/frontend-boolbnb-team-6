@@ -22,11 +22,11 @@ export default {
 </script>
 
 <template>
+    
     <div class="position-relative mobile_size">
         <!-- IMG -->
-        <a href="#">
             <img :src="'http://127.0.0.1:8000/storage/'+ cover_img " class="img-card rounded d-block shadoww_img" alt="...">
-        </a>
+            
         <!-- CONTAINER INFO -->
         <div class="container_ position_container p-2 rounded shadoww_container">
             <p class="fst-italic">{{ address }} </p>
@@ -38,7 +38,9 @@ export default {
                 <p><i class="fa-solid fa-bed"></i> Letti: {{ beds_number }} <span class="ps-3"><i class="fa-solid fa-bath"></i> Bagni: {{ bathrooms_number }}</span></p>
             </div>
         </div>
-    </div>                                    
+    </div>  
+    <!-- <router-link :to="{name: 'apartment', params: {slug: apartment.slug}}"> Vedi </router-link> -->
+                                      
 </template>
 
 <style lang="scss" scoped>
@@ -53,6 +55,7 @@ export default {
 
      .shadoww_img:hover{
      box-shadow: 0px 5px 5px 5px rgb(0, 0, 0, .5);
+     opacity: 0.2;
      }
 
     .img-card{
