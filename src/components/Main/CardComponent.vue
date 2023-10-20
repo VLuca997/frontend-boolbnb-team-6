@@ -45,22 +45,31 @@ export default {
 
 <style lang="scss" scoped>
 
-     .shadoww_img{
-     box-shadow: 0px 5px 5px 3px rgb(0, 0, 0, .5);
-     }
+    //  .shadoww_img{
+    //  box-shadow: 0px 5px 5px 3px rgb(0, 0, 0, .5);
+    //  }
 
-     .shadoww_container{
-     box-shadow: 0px 5px 5px 3px rgb(0, 0, 0, .5);
-     }
+    //  .shadoww_container{
+    //  box-shadow: 0px 5px 5px 3px rgb(0, 0, 0, .5);
+    //  }
 
-     .shadoww_img:hover{
-     box-shadow: 0px 5px 5px 5px rgb(0, 0, 0, .5);
-     opacity: 0.2;
-     }
+    //  .shadoww_img:hover{
+    //  box-shadow: 0px 5px 5px 5px rgb(0, 0, 0, .5);
+    //  opacity: 0.2;
+    //  }
 
     .img-card{
         height: 350px;
         width: 100%;
+        box-shadow: 3px 3px 5px rgb(0, 0, 0, .5);
+        transition: .3s;
+        object-fit: cover;
+    }
+
+    .img-card:hover{
+        box-shadow: 6px 6px 8px rgb(0, 0, 0, .5);
+        opacity: 0.8;
+        transform: translateY(-10px);
     }
 
     .container_{
@@ -72,13 +81,13 @@ export default {
         position: relative;
         bottom: 50px;
         left: 25px;
-        
     }
 
     .position_price{
         position: absolute;
         right: 0px;
-        top: -15px;
+        top: -18px;
+        font-size: 12px;
     }
 
     .style_price{

@@ -52,7 +52,8 @@ export default {
     <section>
         <div class="container py-4">
             <div class="row">
-            <div class="col-3" v-for="apartment in this.allApartments" :key="apartment.id">
+            <div class="col-3 " v-for="apartment in this.allApartments" :key="apartment.id">
+                
                 <CardComponent
                 :title="apartment.title"
                 :price_per_night="apartment.price_per_night"
@@ -64,7 +65,7 @@ export default {
                 :cover_img="apartment.cover_img"
                 :description="apartment.description"
                 /> 
-                <router-link :to="{name: 'apartment', params: {slug:apartment.slug}}"> Vedi </router-link> 
+                <router-link :to="{name: 'apartment', params: {slug:apartment.slug}}">Vedi</router-link> 
             </div>
             
         </div>
@@ -91,6 +92,8 @@ export default {
     .min_width{
         min-width: 300px;
     }
+
+    
 
     @media (min-width: 320px) and (max-width: 480px){
 
