@@ -1,8 +1,9 @@
 <script>
 import axios from 'axios';
+import MapComponent from '../components/MapComponent.vue';
 
 
-// my-component.js
+
 export default {
 
     name: "ApartmentPage",
@@ -15,8 +16,10 @@ export default {
             picture: [],
         }
     },
-    // components: {
-    // },
+    
+    components: {
+        MapComponent,
+    },
 
     created() {
         this.getApartment();
@@ -221,6 +224,7 @@ export default {
             <h5 class="pb-4" id="position">
                 Posizione Appartamento
             </h5>
+            <MapComponent/>
             <!-- <div class="col mb-4">
                 <img src="https://www.centrostoricocb.it/immagini/IMM/pianta-borgo%20900.jpg" alt="">
             </div> -->
