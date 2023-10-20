@@ -55,11 +55,11 @@ export default {
             <div class="col-3" v-for="apartment in this.allApartments" :key="apartment.id">
                 <CardComponent
                 :title="apartment.title"
-                :price_per_night="apartment.price_per_night"
-                :rooms_number="apartment.rooms_number"
-                :beds_number="apartment.beds_number"
-                :bathrooms_number="apartment.bathrooms_number"
-                :square_meters="apartment.square_meters"
+                :price_per_night="parseFloat(apartment.price_per_night)"
+                :rooms_number="parseFloat(apartment.rooms_number)"
+                :beds_number="parseFloat(apartment.beds_number)"
+                :bathrooms_number="parseFloat(apartment.bathrooms_number)"
+                :square_meters="parseFloat(apartment.square_meters)"
                 :address="apartment.address"
                 :cover_img="apartment.cover_img"
                 :description="apartment.description"
