@@ -20,7 +20,10 @@ export default {
 <template>
   <HeaderComponent />
   <router-view></router-view>
-  <FooterComponent  />  
+  <div class="footer-class">
+
+    <FooterComponent />  
+  </div>
 </template>
 
 <style lang="scss">
@@ -30,4 +33,11 @@ export default {
  font-family: 'Nunito', sans-serif;
 }
 
+
+.footer-class{
+  position: absolute;
+  bottom: 0;
+  left:0;
+  right: 0;
+}
 </style>

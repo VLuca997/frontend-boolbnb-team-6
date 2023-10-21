@@ -52,7 +52,7 @@
 
 
 
-    <div class="container-fluid h-100 footer-size ">
+    <div class="container-fluid h-100 footer-size  position-relative">
         <div class="row  text-center   ">
             <div class="col-12 col-md-4  ">
                <div>
@@ -169,6 +169,7 @@
     .logo-footer{
         height: 100%;
         width: 100%;
+        bottom: 0;
     }
 
     ul li {
