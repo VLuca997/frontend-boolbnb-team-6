@@ -1,8 +1,9 @@
 <script>
 import axios from 'axios';
+import MapComponent from '../components/MapComponent.vue';
 
 
-// my-component.js
+
 export default {
 
     name: "ApartmentPage",
@@ -15,8 +16,10 @@ export default {
             picture: [],
         }
     },
-    // components: {
-    // },
+    
+    components: {
+        MapComponent,
+    },
 
     created() {
         this.getApartment();
@@ -86,19 +89,19 @@ export default {
             {{ apartment.title }}
         </h1>
 
-        <div class="row images-container">
-            <div class="col-sm-12 col-lg-6 cover_img">
+        <div class="d-flex images_container">
+            <div class="col-6 cover_img">
                 <img :src="'http://127.0.0.1:8000/storage/'+ apartment.cover_img " alt="Cover img">
             </div>
 
-            <div class="col-sm-12 col-lg-6 row picture_img">
-                <div v-for="picture in apartment.pictures" :key="picture.id" class="col-6 single_picture">
+            <div class="col-6 picture_img d-flex flex-wrap">
+                <div v-for="picture in apartment.pictures" :key="picture.id" class="single_picture">
                     <img :src="'http://127.0.0.1:8000/storage/'+ picture.img_url " alt="">
                 </div>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row py-2">
             <div class="col-6">
                 <ul>
                     <li class="d-inline-block p-2"><a href="#description">Descrizione</a></li>
@@ -147,9 +150,9 @@ export default {
 
         <div class="row py-3">
             <div class="col">
-                <h5 class="pb-2" id="description">
+                <h4 class="pb-2" id="description">
                     Descrizione
-                </h5>
+                </h4>
                 <p>
                     {{ apartment.description }}
                 </p>
@@ -159,9 +162,9 @@ export default {
         <hr>
 
         <div class="row py-3">
-            <h5 class="pb-2" id="details">
+            <h4 class="pb-2" id="details">
                 Dettagli Appartamento
-            </h5>
+            </h4>
             <div class="col-3">
                 <span class="p-2"><i class="fa-solid fa-bath"></i></span> 
                 Bagni: {{ apartment.bathrooms_number }}</div>
@@ -179,9 +182,9 @@ export default {
         <hr>
 
         <div class="row py-3">
-            <h5 class="pb-2" id="services">
+            <h4 class="pb-2" id="services">
                 Servizi Disponibili
-            </h5>
+            </h4>
             <div class="col-6" v-for="service in apartment.services" key="service.id">
                 <div class="icon d-inline-block">
                     <i class="p-2" :class="service.icon"></i>
@@ -194,9 +197,11 @@ export default {
         <hr>
 
         <div class="row py-3">
-            <h5 class="pb-4" id="position">
+            <h4 class="pb-4" id="position">
                 Posizione Appartamento
-            </h5>
+            </h4>
+            <MapComponent/>
+            <h4 class="py-3">{{ apartment.address }}</h4>
             <!-- <div class="col mb-4">
                 <img src="https://www.centrostoricocb.it/immagini/IMM/pianta-borgo%20900.jpg" alt="">
             </div> -->
@@ -238,6 +243,7 @@ export default {
             padding: 2px 5px;
             border-radius: 10px;
             transition: 0.3s;
+            font-size: 22px;
             &:hover {
                 background-color: #F6AE2D;
             }
@@ -245,21 +251,38 @@ export default {
             
         }
     } 
-    .cover_img {
-        width: 50%;
 
-        img {
-        width: 100%;
-        object-fit: cover;
-        }
-    }
-        .single_picture {
-            max-height: 200px;
+    .images_container {
+        height: 500px;
+
+        .cover_img{
+            height: 100%;
+
             img {
-            width: 100%;
-            object-fit: cover;
+                width: 100%;
+                height: 100%;
+                padding: 5px;
             }
         }
+
+        .picture_img {
+            height: 100%;
+
+            .single_picture {
+                height: 50%;
+                overflow: hidden;
+                width: 50%;
+                height: 50%;
+
+                img {
+                width: 100%;
+                height: 100%;
+                padding: 5px;
+                object-fit: cover;
+                }
+            }
+        }
+    }
 
     .message_btn{
         background-color: #F6AE2D;
@@ -270,6 +293,7 @@ export default {
         font-size: 15px;
         box-shadow: 5px 5px 5px lightgrey;
         transition: .3s;
+        margin: 5px 0;
 
         &:hover {
             scale: 1.1;
@@ -277,8 +301,11 @@ export default {
         }
     }
 
-    .icon {
-        width: 40px;
+    i {
+        color: #F6AE2D;
+        .icon {
+            width: 40px;
+        }
     }
 
 </style>

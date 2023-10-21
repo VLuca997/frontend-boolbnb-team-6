@@ -1,5 +1,5 @@
 <script>
-// my-component.js
+
 
 </script>
 
