@@ -89,20 +89,40 @@ export default {
             {{ apartment.title }}
         </h1>
 
-        <div class="d-flex images_container">
-            <div class="col-6 cover_img">
-                <img :src="'http://127.0.0.1:8000/storage/'+ apartment.cover_img " alt="Cover img">
+        <div class="d-flex justify-content-between images_container">
+
+            <div class="col-md-12 col-lg-6 cover_img">
+                <img :src="'http://127.0.0.1:8000/storage/'+ apartment.cover_img" alt="Cover img">
             </div>
 
-            <div class="col-6 picture_img d-flex flex-wrap">
-                <div v-for="picture in apartment.pictures" :key="picture.id" class="single_picture">
-                    <img :src="'http://127.0.0.1:8000/storage/'+ picture.img_url " alt="">
+            <div class="col-lg-6 col-md-12 ">
+                <div class="picture_img d-flex flex-wrap">
+                    <div v-for="picture in apartment.pictures" :key="picture.id" class="single_picture">
+                        <img :src="'http://127.0.0.1:8000/storage/'+ picture.img_url " alt="">
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- <div class="row images_container">
+
+            <div class="col-12 col-lg-6 cover_img">
+                <img class="img-fluid rounded" :src="'http://127.0.0.1:8000/storage/'+ apartment.cover_img" alt="Cover img">
+            </div>
+
+            <div class="col-12 col-lg-6">
+                <div class="row picture_img">
+                    <div class="col-12 col-lg-6 single_picture" v-for="picture in apartment.pictures" :key="picture.id">
+                        <img class="img-fluid rounded " :src="'http://127.0.0.1:8000/storage/'+ picture.img_url " alt="">
+                    </div>
+                </div>
+            </div>
+
+        </div> -->
+
+
         <div class="row py-2">
-            <div class="col-6">
+            <div class="col-sm-12 col-lg-8">
                 <ul>
                     <li class="d-inline-block p-2"><a href="#description">Descrizione</a></li>
                     <li class="d-inline-block p-2"><a href="#details">Dettagli appartamento</a></li>
@@ -110,7 +130,7 @@ export default {
                     <li class="d-inline-block p-2"><a href="#position">Posizione</a></li>
                 </ul>
             </div>
-            <div class="col-6 text-end">
+            <div class="col-md-12 col-lg-4 text-lg-end">
                 <button type="button" class="message_btn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Scrivimi un messaggio</button>
             </div>
         </div>
@@ -165,16 +185,16 @@ export default {
             <h4 class="pb-2" id="details">
                 Dettagli Appartamento
             </h4>
-            <div class="col-3">
+            <div class="col-sm-12 col-md-6 col-lg-3">
                 <span class="p-2"><i class="fa-solid fa-bath"></i></span> 
                 Bagni: {{ apartment.bathrooms_number }}</div>
-            <div class="col-3">
+            <div class="col-sm-12 col-md-6 col-lg-3">
                 <span class="p-2"><i class="fa-solid fa-bed"></i></span> 
                 Letti: {{ apartment.beds_number }}</div>
-            <div class="col-3">
+            <div class="col-sm-12 col-md-6 col-lg-3">
                 <span class="p-2"><i class="fa-solid fa-door-open"></i></span> 
                 Stanze: {{ apartment.rooms_number }}</div>
-            <div class="col-3">
+            <div class="col-sm-12 col-md-6 col-lg-3">
                 <span class="p-2"><i class="fa-solid fa-maximize"></i></span> 
                 Metri Quadri: {{ apartment.square_meters }}</div>
         </div>
@@ -185,7 +205,7 @@ export default {
             <h4 class="pb-2" id="services">
                 Servizi Disponibili
             </h4>
-            <div class="col-6" v-for="service in apartment.services" key="service.id">
+            <div class="col-sm-12 col-md-6 col-lg-3" v-for="service in apartment.services" key="service.id">
                 <div class="icon d-inline-block">
                     <i class="p-2" :class="service.icon"></i>
                 </div>
@@ -235,8 +255,9 @@ export default {
     ul{
         margin-bottom: 0;
         padding: 10px 0px;
+        
         li {
-            margin-right: 5px;
+            
             font-size: 15px;
             a {
             color: black;
@@ -252,38 +273,6 @@ export default {
         }
     } 
 
-    .images_container {
-        height: 500px;
-
-        .cover_img{
-            height: 100%;
-
-            img {
-                width: 100%;
-                height: 100%;
-                padding: 5px;
-            }
-        }
-
-        .picture_img {
-            height: 100%;
-
-            .single_picture {
-                height: 50%;
-                overflow: hidden;
-                width: 50%;
-                height: 50%;
-
-                img {
-                width: 100%;
-                height: 100%;
-                padding: 5px;
-                object-fit: cover;
-                }
-            }
-        }
-    }
-
     .message_btn{
         background-color: #F6AE2D;
         border: 2px solid #F6AE2D;
@@ -294,12 +283,66 @@ export default {
         box-shadow: 5px 5px 5px lightgrey;
         transition: .3s;
         margin: 5px 0;
-
         &:hover {
             scale: 1.1;
             box-shadow: 5px 5px 8px grey;
         }
     }
+
+    .images_container {
+        height: 500px;
+
+        .cover_img{
+            height: 100%;
+            
+            img {
+                border-radius: 20px;
+                width: 100%;
+                height: 100%;
+                padding: 5px;
+            }
+        }
+
+        .picture_img {
+            height: 100%;
+
+            .single_picture {
+                overflow: hidden;
+                width: 50%;
+                height: 50%;
+
+                img {
+                    border-radius: 20px;
+                width: 100%;
+                height: 100%;
+                padding: 5px;
+                object-fit: cover;
+                }
+            }
+        }
+    }
+
+    // .images_container {
+        
+    //     .cover_img{
+            
+    //         img {
+                
+    //         }
+    //     }
+
+    //     .picture_img {
+            
+
+    //         .single_picture {
+                
+    //             img {
+                
+                    
+    //             }
+    //         }
+    //     }
+    // }
 
     i {
         color: #F6AE2D;
