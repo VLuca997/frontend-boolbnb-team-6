@@ -83,47 +83,28 @@ export default {
 
 <template>
 
-    <div class="container">
+    <div class="container bg">
 
-        <h1 class="py-3">
-            {{ apartment.title }}
+        <h1 class="py-3 text-center">
+            <strong>{{ apartment.title }}</strong>
         </h1>
 
-        <!-- <div class="row images-container">
-            <div class="col-sm-12 col-lg-6 cover_img">
-                <img :src="'http://127.0.0.1:8000/storage/'+ apartment.cover_img " alt="Cover img">
+            <div class="container">
+                <div class="row cover">
+                    <div class="col-6 py-2">
+                        <img class="rounded cover shadoww" :src="'http://127.0.0.1:8000/storage/'+ apartment.cover_img " alt="Cover img">
+                    </div>
+                    <div class="col-6 py-2">
+                        <div class="row">
+                            <div class="col-6 p-2 pic text-center" v-for="picture in apartment.pictures" :key="picture.id">
+                        <img class="rounded shadoww_pic" :src="'http://127.0.0.1:8000/storage/'+ picture.img_url " alt="">
+                    </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
             </div>
-
-            <div class="col-sm-12 col-lg-6 row picture_img">
-                <div v-for="picture in apartment.pictures" :key="picture.id" class="col-6 single_picture">
-                    <img :src="'http://127.0.0.1:8000/storage/'+ picture.img_url " alt="">
-                </div>
-            </div>
-        </div> -->
-
-        <div class="d-flex images_container">
-            <div class="col-6 cover_img">
-                <img :src="'http://127.0.0.1:8000/storage/'+ apartment.cover_img " alt="Cover img">
-            </div>
-
-            <div class="col-6 picture_img d-flex flex-wrap">
-                <div v-for="picture in apartment.pictures" :key="picture.id" class="single_picture">
-                    <img :src="'http://127.0.0.1:8000/storage/'+ picture.img_url " alt="">
-                </div>
-                <!-- <div class="single_picture col-6">
-                    1
-                </div>
-                <div class="single_picture col-6">
-                    2
-                </div>
-                <div class="single_picture col-6">
-                    3
-                </div>
-                <div class="single_picture col-6">
-                    4
-                </div> -->
-            </div>
-        </div>
 
         <div class="row">
             <div class="col-6">
@@ -135,7 +116,7 @@ export default {
                 </ul>
             </div>
             <div class="col-6 text-end">
-                <button type="button" class="message_btn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Scrivimi un messaggio</button>
+                <button type="button" class="message_btn mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Scrivimi un messaggio</button>
             </div>
         </div>
 
@@ -175,7 +156,7 @@ export default {
         <div class="row py-3">
             <div class="col">
                 <h4 class="pb-2" id="description">
-                    Descrizione
+                    <strong>Descrizione</strong>
                 </h4>
                 <p>
                     {{ apartment.description }}
@@ -187,7 +168,7 @@ export default {
 
         <div class="row py-3">
             <h4 class="pb-2" id="details">
-                Dettagli Appartamento
+                <strong>Dettagli Appartamento</strong>
             </h4>
             <div class="col-3">
                 <span class="p-2"><i class="fa-solid fa-bath"></i></span> 
@@ -207,7 +188,7 @@ export default {
 
         <div class="row py-3">
             <h4 class="pb-2" id="services">
-                Servizi Disponibili
+                <strong>Servizi Disponibili</strong>
             </h4>
             <div class="col-6" v-for="service in apartment.services" key="service.id">
                 <div class="icon d-inline-block">
@@ -222,38 +203,31 @@ export default {
 
         <div class="row py-3">
             <h4 class="pb-4" id="position">
-                Posizione Appartamento
+                <strong>Posizione Appartamento</strong>
             </h4>
             <MapComponent/>
-            <h4 class="py-3">{{ apartment.address }}</h4>
-            <!-- <div class="col mb-4">
-                <img src="https://www.centrostoricocb.it/immagini/IMM/pianta-borgo%20900.jpg" alt="">
-            </div> -->
+            <p class="py-3 fst-italic">{{ apartment.address }}</p>
+            
         </div>
 
-
     </div>
-
-    <!-- <div v-if="apartment">
-        <h1>{{ apartment.title }}</h1>
-        <ul v-for="service in apartment.services">
-            <li>
-                {{ service.name }}
-            </li>
-        </ul>
-    </div>
-    <div v-else>
-        Non trovato
-    </div> -->
-    
 </template>
 
 <style lang="scss" scoped>
+
+.bg{
+    background-color: rgba(241, 241, 241, 0.603);
+    border-radius: 10px;
+}
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+
+    i{
+        color: #F6AE2D;
+    }
 }
 
     ul{
@@ -274,52 +248,30 @@ export default {
             
         }
     } 
-    // .cover_img {
-    //     width: 50%;
+    .shadoww{
+     box-shadow: 0px 5px 5px 2px rgb(0, 0, 0, .5);
+    }
 
-    //     img {
-    //     width: 100%;
-    //     object-fit: cover;
-    //     }
-    // }
-    //     .single_picture {
-    //         max-height: 200px;
-    //         img {
-    //         width: 100%;
-    //         object-fit: cover;
-    //         }
-    //     }
+    .shadoww_pic{
+     box-shadow: 5px 5px 5px 1px rgb(0, 0, 0, .5);
+    }
+    .cover img{
+        height: 98%;
+        width: 100%;
 
-    .images_container {
-        border: 2px dashed black;
-        height: 500px;
+    }
+    .pic img{
+        width: 100%;
+        max-height:100%;
+        background-position: center;
+        background-size: cover;
+        object-fit: cover;
+        transition: transform 0.3s ease;
 
-        .cover_img{
-            border: 2px dashed red;
-            height: 100%;
-
-            img {
-                width: 100%;
-                height: 100%;
-            }
-        }
-
-        .picture_img {
-            border: 2px dashed green;
-            height: 100%;
-
-            .single_picture {
-                border: 2px dashed blue;
-                height: 50%;
-                overflow: hidden;
-                width: 50%;
-                height: 100%;
-                img {
-                widows: 100%;
-                height: 50%;
-                }
-            }
-        }
+        &:hover{
+            transform: scale(1.1);
+            width: 95%;
+        } 
     }
 
     .message_btn{

@@ -141,7 +141,7 @@ export default {
 </script>
 
 <template>
-    <div class="container w-75 ">
+    <div class="container w-75 bg">
         <div class="row text-center align-items-center">
             <div class="col-10">
                 <div class="py-3 rounded" ref="searchBoxContainer">
@@ -236,7 +236,10 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-
+.bg{
+    background-color: rgba(241, 241, 241, 0.603);
+    border-radius: 10px;
+}
 .my-container {
     margin-bottom: 500px;
 
