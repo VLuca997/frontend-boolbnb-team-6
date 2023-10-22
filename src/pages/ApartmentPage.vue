@@ -89,18 +89,6 @@ export default {
             {{ apartment.title }}
         </h1>
 
-        <!-- <div class="row images-container">
-            <div class="col-sm-12 col-lg-6 cover_img">
-                <img :src="'http://127.0.0.1:8000/storage/'+ apartment.cover_img " alt="Cover img">
-            </div>
-
-            <div class="col-sm-12 col-lg-6 row picture_img">
-                <div v-for="picture in apartment.pictures" :key="picture.id" class="col-6 single_picture">
-                    <img :src="'http://127.0.0.1:8000/storage/'+ picture.img_url " alt="">
-                </div>
-            </div>
-        </div> -->
-
         <div class="d-flex images_container">
             <div class="col-6 cover_img">
                 <img :src="'http://127.0.0.1:8000/storage/'+ apartment.cover_img " alt="Cover img">
@@ -110,22 +98,10 @@ export default {
                 <div v-for="picture in apartment.pictures" :key="picture.id" class="single_picture">
                     <img :src="'http://127.0.0.1:8000/storage/'+ picture.img_url " alt="">
                 </div>
-                <!-- <div class="single_picture col-6">
-                    1
-                </div>
-                <div class="single_picture col-6">
-                    2
-                </div>
-                <div class="single_picture col-6">
-                    3
-                </div>
-                <div class="single_picture col-6">
-                    4
-                </div> -->
             </div>
         </div>
 
-        <div class="row">
+        <div class="row py-2">
             <div class="col-6">
                 <ul>
                     <li class="d-inline-block p-2"><a href="#description">Descrizione</a></li>
@@ -267,6 +243,7 @@ export default {
             padding: 2px 5px;
             border-radius: 10px;
             transition: 0.3s;
+            font-size: 22px;
             &:hover {
                 background-color: #F6AE2D;
             }
@@ -274,49 +251,34 @@ export default {
             
         }
     } 
-    // .cover_img {
-    //     width: 50%;
-
-    //     img {
-    //     width: 100%;
-    //     object-fit: cover;
-    //     }
-    // }
-    //     .single_picture {
-    //         max-height: 200px;
-    //         img {
-    //         width: 100%;
-    //         object-fit: cover;
-    //         }
-    //     }
 
     .images_container {
-        border: 2px dashed black;
         height: 500px;
 
         .cover_img{
-            border: 2px dashed red;
             height: 100%;
 
             img {
                 width: 100%;
                 height: 100%;
+                padding: 5px;
             }
         }
 
         .picture_img {
-            border: 2px dashed green;
             height: 100%;
 
             .single_picture {
-                border: 2px dashed blue;
                 height: 50%;
                 overflow: hidden;
                 width: 50%;
-                height: 100%;
-                img {
-                widows: 100%;
                 height: 50%;
+
+                img {
+                width: 100%;
+                height: 100%;
+                padding: 5px;
+                object-fit: cover;
                 }
             }
         }
@@ -331,6 +293,7 @@ export default {
         font-size: 15px;
         box-shadow: 5px 5px 5px lightgrey;
         transition: .3s;
+        margin: 5px 0;
 
         &:hover {
             scale: 1.1;
@@ -338,8 +301,11 @@ export default {
         }
     }
 
-    .icon {
-        width: 40px;
+    i {
+        color: #F6AE2D;
+        .icon {
+            width: 40px;
+        }
     }
 
 </style>
