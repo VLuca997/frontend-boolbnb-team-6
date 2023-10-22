@@ -60,9 +60,9 @@
 
                     <ul class="d-inline-block px-3">
 
-                        <li class="py-2"><a href="#">- Chi siamo</a></li>
-                        <li class="py-2"><a href="#">- Contatti</a></li>
-                        <li class="py-2"><a href="#">- Case</a></li>
+                        <li class="py-2"><a href="#">Chi siamo</a></li>
+                        <li class="py-2"><a href="#">Contatti</a></li>
+                        <li class="py-2"><a href="#">Case</a></li>
 
                     </ul>
 
@@ -72,7 +72,7 @@
 
             <div class="col-12 col-md-4">
 
-                <div class="logo-footer d-flex justify-content-center align-items-center">
+                <div class=" logo-footer d-flex justify-content-center align-items-center">
 
                     <img class="img-fluid w-25" src="/src/assets/img/logo_white.png" alt="">
 
@@ -173,9 +173,14 @@
     }
 
     ul li {
-        text-decoration: none;
+        // text-decoration: none;
         list-style: none;
         padding: 0;
+    }
+
+    a{
+        text-decoration: none;
+        color: white;
     }
 
 
@@ -189,24 +194,9 @@
 .logo-footer {
     height: 100%; /* Altezza massima del logo del footer */
 }
-    // .logo-footer{
-    //     width: 50%;
-    // }
 
-    // ul{
-    //     list-style: none;
-    //     padding: 0;
-
-    //     a {
-    //         text-decoration: none;
-    //         color: white;
-    //         font-size: large;
-    //         transition: color 0.3s ease;
-
-    //         &:hover {
-    //             color: #F6AE2D;
-    //         }
-    //     }
-    // }
+i{
+    font-size: 30px;
+}
 
 </style>
