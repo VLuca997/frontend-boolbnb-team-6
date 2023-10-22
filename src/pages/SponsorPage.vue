@@ -48,8 +48,8 @@ export default {
 
     <div class="container sponsor_container mt-5">
         <div class="row text-center">
-            <div class="row">
-                <div class="col-sm-12 col-md  p-4" v-for="sponsorship in sponsorships" :key="sponsorship.id">
+            <div class="row my-5">
+                <div class="col-sm-12 col-md  p-4 " v-for="sponsorship in sponsorships" :key="sponsorship.id">
                     <h2>{{ sponsorship.name }}</h2>
                     <input type="checkbox" name="price" id="price">
                     <label class="ps-2" for="price"><strong>{{sponsorship.price}}€</strong></label>
@@ -84,6 +84,8 @@ export default {
         background-color: rgb(245, 241, 241);
         border: 2px solid #F6AE2D;
         border-radius: 10px;
+        height: 80vh;
+        margin-bottom: 70px;
     }
 
 </style>
