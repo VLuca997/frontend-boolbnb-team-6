@@ -237,9 +237,4 @@ export default {
 
 <style lang="scss" scoped>
 
-.my-container {
-    margin-bottom: 500px;
-
-    
-}
 </style>

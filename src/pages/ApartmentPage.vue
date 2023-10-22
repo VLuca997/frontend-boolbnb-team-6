@@ -39,7 +39,7 @@ export default {
                         //console.log(res)
                         if (res.data.success) {
                             this.apartment = res.data.results;
-                            console.log(this.apartment)
+                            // console.log(this.apartment)
                         }
                         this.loading = false;
                     })
