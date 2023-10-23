@@ -85,26 +85,51 @@ export default {
 
 <template>
 
-    <div class="container" v-if="!loading">
+    <div class="container px-5" v-if="!loading">
 
         <h1 class="py-3">
             {{ apartment.title }}
         </h1>
 
-        <div class="d-flex justify-content-between images_container">
+        <div class="visible_img d-lg-block">
+            <div class="d-flex justify-content-between images_container">
 
-            <div class="col-md-12 col-lg-6 cover_img">
-                <img :src="'http://127.0.0.1:8000/storage/'+ apartment.cover_img" alt="Cover img">
-            </div>
+                <div class="col-md-12 col-lg-6 cover_img">
+                    <img :src="'http://127.0.0.1:8000/storage/'+ apartment.cover_img" alt="Cover img">
+                </div>
 
-            <div class="col-lg-6 col-md-12 ">
-                <div class="picture_img d-flex flex-wrap">
-                    <div v-for="picture in apartment.pictures" :key="picture.id" class="single_picture">
-                        <img :src="'http://127.0.0.1:8000/storage/'+ picture.img_url " alt="">
+                <div class="col-lg-6 col-md-12 ">
+                    <div class="picture_img d-flex flex-wrap">
+                        <div v-for="picture in apartment.pictures" :key="picture.id" class="single_picture">
+                            <img :src="'http://127.0.0.1:8000/storage/'+ picture.img_url " alt="">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div id="carouselExample" class="carousel slide d-lg-none">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" :src="'http://127.0.0.1:8000/storage/'+ apartment.cover_img" alt="Cover img">
+                </div>
+
+                <div v-for="picture in apartment.pictures" :key="picture.id" class="carousel-item">
+                    <img class="d-block w-100" :src="'http://127.0.0.1:8000/storage/'+ picture.img_url " alt="">
+                </div>
+
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+
 
         <!-- <div class="row images_container">
 
@@ -300,7 +325,7 @@ export default {
     }
 
     .images_container {
-        height: 500px;
+        height: 450px;
 
         .cover_img{
             height: 100%;
@@ -310,6 +335,7 @@ export default {
                 width: 100%;
                 height: 100%;
                 padding: 5px;
+                object-fit: cover;
             }
         }
 
@@ -322,7 +348,7 @@ export default {
                 height: 50%;
 
                 img {
-                    border-radius: 20px;
+                border-radius: 20px;
                 width: 100%;
                 height: 100%;
                 padding: 5px;
@@ -364,5 +390,25 @@ export default {
     .loader {
         padding: 180px 0;
     }
+
+    .carousel{
+        height: 500px;
+        .carousel-item {
+            img {
+                border-radius: 20px;
+                height: 500px;
+                object-fit: cover;
+            }
+        }
+
+    }
+
+    .visible_img {
+        display: none;
+    }
+
+    // .container {
+    //     padding: 0px 30px
+    // }
 
 </style>

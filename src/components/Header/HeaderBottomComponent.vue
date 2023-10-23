@@ -106,12 +106,12 @@ export default {
             <div class="row w-100 flex-column text-center">
                 <!-- Search Box di tom tom-->
                 <h2 class="text-light m-auto col-6">Find, Enjoy, Share</h2>
-                <div class="py-3 col-6 m-auto" ref="searchBoxContainer">
+                <div class="py-3 col-12 col-md-6 m-auto" ref="searchBoxContainer">
         
                 </div>
                 <!-- Input nascosto dal front end -->
-                <input class="col " type="text" hidden v-model="searchQuery" />
-                <button class="btn col-3 m-auto btn-primary" @click="searchApartments">Cerca</button>
+                <input class="col" type="text" hidden v-model="searchQuery" />
+                <button class="btn col-12 col-md-4 m-auto btn-primary" @click="searchApartments">Cerca</button>
             </div>
         </div>
     </section>

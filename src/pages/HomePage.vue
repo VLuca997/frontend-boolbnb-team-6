@@ -50,7 +50,7 @@ export default {
 
     <!-- CARD SECTION -->
     <section>
-        <div class="container py-4">
+        <div class="container py-4 px-5 px-sm-0">
             <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-3" v-for="apartment in this.allApartments" :key="apartment.id">
 
