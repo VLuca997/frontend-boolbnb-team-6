@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios';
 import MapComponent from '../components/MapComponent.vue';
+import LoaderComponent from '../components/LoaderComponent.vue';
 
 
 
@@ -19,6 +20,7 @@ export default {
     
     components: {
         MapComponent,
+        LoaderComponent,
     },
 
     created() {
@@ -83,7 +85,7 @@ export default {
 
 <template>
 
-    <div class="container">
+    <div class="container" v-if="!loading">
 
         <h1 class="py-3">
             {{ apartment.title }}
@@ -230,6 +232,14 @@ export default {
 
     </div>
 
+    <div class="container loader" v-if="loading">
+        <div class="row">
+            <div class="col-1 m-auto">
+                <LoaderComponent />
+            </div>
+        </div>
+    </div>
+
     <!-- <div v-if="apartment">
         <h1>{{ apartment.title }}</h1>
         <ul v-for="service in apartment.services">
@@ -349,6 +359,10 @@ export default {
         .icon {
             width: 40px;
         }
+    }
+
+    .loader {
+        padding: 180px 0;
     }
 
 </style>
