@@ -20,12 +20,19 @@ export default {
             sender_email: '',
             object: '',
             content :'',
+            sentSuccess: false,
+            isSending: false,
+            user: window.auth,
         }
     },
 
     components: {
         MapComponent,
         LoaderComponent,
+    },
+
+    mounted() {
+     console.log(window.auth);
     },
 
     created() {
@@ -39,41 +46,41 @@ export default {
     methods: {
         sendMessage() {
 
+            if(this.sender_name && this.sender_email && this.content){
+                
                 let data = {
-                    sender_name: this.sender_name,
-                    sender_email: this.sender_email,
-                    object: this.object,
-                    content: this.content,
-                    apartment_id: this.apartment.id,
+                sender_name: this.sender_name,
+                sender_email: this.sender_email,
+                object: this.object,
+                content: this.content,
+                apartment_id: this.apartment.id,
                 };
 
                 console.log(data);
 
+                this.isSending = true;
                 axios
-                    .post('http://127.0.0.1:8000/api/messages/store', data, {
-                            headers: {
-                                'Content-Type': 'multipart/form-data'
-                            }})
+                .post('http://127.0.0.1:8000/api/messages/store', data, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }})
 
-                    .then((response) => {
-                        this.isSending = false;
-                        console.log(response);
+                .then((response) => {
+                    this.isSending = false;
+                    console.log(response);
 
-                        if (response.data.success) {
-                            // this.showSuccess = true;
-                            // // this.resetForm();
-                            // // this.reloadPage();
-                        } else {
-                            this.showError = true;
-                            this.errors = response.data.errors;
-                        }
-                    })
-                    .catch((error) => {
-                        // this.isSending = false;
-                        console.error(error);
-                    });
-                },
-
+                    if (response.data.success) {
+                        this.sentSuccess = true;
+                    } else {
+                        this.showError = true;
+                        this.errors = response.data.errors;
+                    }
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+            }
+        },
 
         getApartment() {
             if (!this.loading) {
@@ -171,35 +178,48 @@ export default {
                     <h1 class="modal-title fs-5" id="exampleModalLabel"> Invia un messaggio a <strong> {{ apartment.user.first_name }} </strong></h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form @submit.prevent="sendMessage()">
-                    <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Appartamento</label>
-                        <input type="text" class="form-control" id="recipient-name" :value="apartment.title">
+                    <div class="modal-body" v-if="sentSuccess == false">
+                        <form @submit.prevent="sendMessage()">
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Appartamento</label>
+                                <input type="text" class="form-control" id="recipient-name" :value="apartment.title">
+                            </div>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Nome <span style="color: red;">*</span></label>
+                                <input type="text" class="form-control" id="recipient-name" v-model="sender_name" required min="3">
+                            </div>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Email <span style="color: red;">*</span></label>
+                                <input type="email" class="form-control" id="recipient-name" v-model="sender_email" required autocomplete="email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Oggetto</label>
+                                <input type="text" class="form-control" id="recipient-name" v-model="object">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Messaggio <span style="color: red;">*</span></label>
+                                <textarea class="form-control" id="message-text" v-model="content" required minlength="3"></textarea>
+                            </div>
+                            <input type="hidden" name="apartment_id" for="apartment_id" v-model="apartment_id" />
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                                <button type="submit" class="btn btn-primary">Invia Messaggio</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Nome</label>
-                        <input type="text" class="form-control" id="recipient-name" v-model="sender_name">
+
+                    <div class="modal-body" v-if="sentSuccess == true">
+                        <h1 class="text-success">
+                            Messaggio Inviato!
+                        </h1>
+                        <h4>
+                            <strong> {{ apartment.user.first_name }} </strong> ti rispodera appena possibile!
+                        </h4>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Email</label>
-                        <input type="text" class="form-control" id="recipient-name" v-model="sender_email">
-                    </div>
-                    <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Oggetto</label>
-                        <input type="text" class="form-control" id="recipient-name" v-model="object">
-                    </div>
-                    <div class="mb-3">
-                        <label for="message-text" class="col-form-label">Messaggio</label>
-                        <textarea class="form-control" id="message-text" v-model="content"></textarea>
-                    </div>
-                    <input type="hidden" name="apartment_id" for="apartment_id" v-model="apartment_id" />
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                    <button type="submit" @click="sendMessage" class="btn btn-primary">Invia Messaggio</button>
-                </div>
+               
                 </div>
             </div>
         </div>

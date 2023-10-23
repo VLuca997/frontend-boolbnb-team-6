@@ -23,7 +23,6 @@ export default {
         if (this.apartment.latitude && this.apartment.longitude) {
           const latitude = parseFloat(this.apartment.latitude);
           const longitude = parseFloat(this.apartment.longitude);
-          console.log(latitude,longitude)
           let center = [longitude, latitude];
 
           this.map = tt.map({
