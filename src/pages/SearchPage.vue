@@ -238,5 +238,6 @@ export default {
 <style lang="scss" scoped>
 .no_app {
     padding: 100px 0;
+    margin-bottom: 252px;
 }
 </style>
