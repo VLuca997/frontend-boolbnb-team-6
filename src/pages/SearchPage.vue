@@ -228,7 +228,7 @@ export default {
        <div v-if="store.apartments.length === 0 && !loading" class="no_app">
                 Nessun appartamento trovato!
         </div>
-        <div v-if="loading">
+        <div v-if="loading" class="no_app">
                 <LoaderComponent/>
         </div>
     </div>
@@ -238,5 +238,6 @@ export default {
 <style lang="scss" scoped>
 .no_app {
     padding: 100px 0;
+    margin-bottom: 252px;
 }
 </style>

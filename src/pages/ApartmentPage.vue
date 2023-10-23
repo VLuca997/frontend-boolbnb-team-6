@@ -15,9 +15,14 @@ export default {
             loading: false,
             services: [],
             picture: [],
+            apartment_id: '',
+            sender_name: '',
+            sender_email: '',
+            object: '',
+            content :'',
         }
     },
-    
+
     components: {
         MapComponent,
         LoaderComponent,
@@ -32,6 +37,44 @@ export default {
     },
 
     methods: {
+        sendMessage() {
+
+                let data = {
+                    sender_name: this.sender_name,
+                    sender_email: this.sender_email,
+                    object: this.object,
+                    content: this.content,
+                    apartment_id: this.apartment.id,
+                };
+
+                console.log(data);
+
+                axios
+                    .post('http://127.0.0.1:8000/api/messages/store', data, {
+                            headers: {
+                                'Content-Type': 'multipart/form-data'
+                            }})
+
+                    .then((response) => {
+                        this.isSending = false;
+                        console.log(response);
+
+                        if (response.data.success) {
+                            // this.showSuccess = true;
+                            // // this.resetForm();
+                            // // this.reloadPage();
+                        } else {
+                            this.showError = true;
+                            this.errors = response.data.errors;
+                        }
+                    })
+                    .catch((error) => {
+                        // this.isSending = false;
+                        console.error(error);
+                    });
+                },
+
+
         getApartment() {
             if (!this.loading) {
                 this.loading = true;
@@ -58,7 +101,7 @@ export default {
 
         axios.get('http://127.0.0.1:8000/api/services')
             .then((response) => {
-                this.services = response.data.results; 
+                this.services = response.data.results;
                 // console.log(response.data.results)
             })
             .catch((error) => {
@@ -70,7 +113,7 @@ export default {
 
         axios.get('http://localhost:8000/api/pictures')
             .then((response) => {
-                this.pictures = response.data.results; 
+                this.pictures = response.data.results;
                 // console.log(response.data.results)
             })
             .catch((error) => {
@@ -78,7 +121,7 @@ export default {
             });
         },
 
-        
+
     }
 }
 </script>
@@ -161,31 +204,43 @@ export default {
                 <button type="button" class="message_btn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Scrivimi un messaggio</button>
             </div>
         </div>
-
         <!-- Invio messaggi -->
 
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Nuovo Messaggio</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel"> Invia un messaggio a <strong> {{ apartment.user.first_name }} </strong></h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form @submit.prevent="sendMessage()">
                     <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Oggetto:</label>
-                        <input type="text" class="form-control" id="recipient-name">
+                        <label for="recipient-name" class="col-form-label">Appartamento</label>
+                        <input type="text" class="form-control" id="recipient-name" :value="apartment.title">
                     </div>
                     <div class="mb-3">
-                        <label for="message-text" class="col-form-label">Messaggio:</label>
-                        <textarea class="form-control" id="message-text"></textarea>
+                        <label for="recipient-name" class="col-form-label">Nome</label>
+                        <input type="text" class="form-control" id="recipient-name" v-model="sender_name">
                     </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Email</label>
+                        <input type="text" class="form-control" id="recipient-name" v-model="sender_email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Oggetto</label>
+                        <input type="text" class="form-control" id="recipient-name" v-model="object">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Messaggio</label>
+                        <textarea class="form-control" id="message-text" v-model="content"></textarea>
+                    </div>
+                    <input type="hidden" name="apartment_id" for="apartment_id" v-model="apartment_id" />
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                    <button type="button" class="btn btn-primary">Invia Messaggio</button>
+                    <button type="submit" @click="sendMessage" class="btn btn-primary">Invia Messaggio</button>
                 </div>
                 </div>
             </div>
@@ -213,16 +268,16 @@ export default {
                 Dettagli Appartamento
             </h4>
             <div class="col-sm-12 col-md-6 col-lg-3">
-                <span class="p-2"><i class="fa-solid fa-bath"></i></span> 
+                <span class="p-2"><i class="fa-solid fa-bath"></i></span>
                 Bagni: {{ apartment.bathrooms_number }}</div>
             <div class="col-sm-12 col-md-6 col-lg-3">
-                <span class="p-2"><i class="fa-solid fa-bed"></i></span> 
+                <span class="p-2"><i class="fa-solid fa-bed"></i></span>
                 Letti: {{ apartment.beds_number }}</div>
             <div class="col-sm-12 col-md-6 col-lg-3">
-                <span class="p-2"><i class="fa-solid fa-door-open"></i></span> 
+                <span class="p-2"><i class="fa-solid fa-door-open"></i></span>
                 Stanze: {{ apartment.rooms_number }}</div>
             <div class="col-sm-12 col-md-6 col-lg-3">
-                <span class="p-2"><i class="fa-solid fa-maximize"></i></span> 
+                <span class="p-2"><i class="fa-solid fa-maximize"></i></span>
                 Metri Quadri: {{ apartment.square_meters }}</div>
         </div>
 
@@ -276,7 +331,7 @@ export default {
     <div v-else>
         Non trovato
     </div> -->
-    
+
 </template>
 
 <style lang="scss" scoped>
@@ -290,9 +345,9 @@ export default {
     ul{
         margin-bottom: 0;
         padding: 10px 0px;
-        
+
         li {
-            
+
             font-size: 15px;
             a {
             color: black;
@@ -303,10 +358,10 @@ export default {
             &:hover {
                 background-color: #F6AE2D;
             }
-            } 
-            
+            }
+
         }
-    } 
+    }
 
     .message_btn{
         background-color: #F6AE2D;
@@ -329,7 +384,7 @@ export default {
 
         .cover_img{
             height: 100%;
-            
+
             img {
                 border-radius: 20px;
                 width: 100%;
@@ -359,22 +414,22 @@ export default {
     }
 
     // .images_container {
-        
+
     //     .cover_img{
-            
+
     //         img {
-                
+
     //         }
     //     }
 
     //     .picture_img {
-            
+
 
     //         .single_picture {
-                
+
     //             img {
-                
-                    
+
+
     //             }
     //         }
     //     }
