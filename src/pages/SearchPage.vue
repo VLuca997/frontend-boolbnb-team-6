@@ -3,8 +3,8 @@ import axios from 'axios';
 import { store } from '../store.js'; 
 import CardComponent from '../components/Main/CardComponent.vue';
 import LoaderComponent from '../components/LoaderComponent.vue';
-import tt from "@tomtom-international/web-sdk-maps";
-import "@tomtom-international/web-sdk-maps";
+// import tt from "@tomtom-international/web-sdk-maps";
+// import "@tomtom-international/web-sdk-maps";
 
 export default {
     data() {
@@ -225,7 +225,7 @@ export default {
             />
             </div>
         </div>
-       <div v-if="store.apartments.length === 0 && !loading">
+       <div v-if="store.apartments.length === 0 && !loading" class="no_app">
                 Nessun appartamento trovato!
         </div>
         <div v-if="loading">
@@ -236,5 +236,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-
+.no_app {
+    padding: 100px 0;
+}
 </style>
