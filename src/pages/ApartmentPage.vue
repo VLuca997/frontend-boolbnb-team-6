@@ -85,7 +85,7 @@ export default {
 
 <template>
 
-    <div class="container" v-if="!loading">
+    <div class="container px-5" v-if="!loading">
 
         <h1 class="py-3">
             {{ apartment.title }}
@@ -406,5 +406,9 @@ export default {
     .visible_img {
         display: none;
     }
+
+    // .container {
+    //     padding: 0px 30px
+    // }
 
 </style>
