@@ -105,7 +105,7 @@ export default {
         <div class="container d-flex justify-content-center align-items-center h-100 ">
             <div class="row w-100 flex-column text-center">
                 <!-- Search Box di tom tom-->
-                <h2 class="text-light m-auto col-6">Find, Enjoy, Share</h2>
+                <h2 class="text-light m-auto col-6 back_drop p-3">Find, Enjoy, Share</h2>
                 <div class="py-3 col-12 col-md-6 m-auto" ref="searchBoxContainer">
         
                 </div>
@@ -134,12 +134,12 @@ section {
         padding: 10px 40px;
         margin: 20px auto;
     }
+}
 
-    .back-drop{
+.back_drop{
     border: 2px solid rgb(255, 255, 255, .5);
     backdrop-filter: blur(10px);
     border-radius: 10px;
-    }
 }
 
 </style>

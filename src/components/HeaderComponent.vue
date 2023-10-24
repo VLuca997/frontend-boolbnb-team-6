@@ -18,7 +18,7 @@
       <div class="container-fluid">
         <a class="navbar-brand p-0" href="#">
           <div class="d-flex align-items-center">
-            <img src="src/assets/img/logo-header.svg" alt="" class="img-header">
+            <!-- <img src="src/assets/img/logo-header.svg" alt="" class="img-header"> -->
             <h2 class="px-3 bg_logo shadoww">
               Bool BNB
             </h2>
@@ -36,6 +36,7 @@
               <router-link class="nav-link link-hover fs-5" :to="{name: 'search'}"> Ricerca </router-link>
             </li>
           </ul>
+          <div class="col d-flex justify-content-center"><img src="src/assets/img/logo-header.svg" alt="" class="img-header"></div>
           <a href="http://127.0.0.1:8000" class="btn btn-outline-warning">
             Accedi
           </a>

@@ -74,7 +74,7 @@ export default {
 
     <!-- COMMENT SECTION -->
     <section>
-        <div class="container py-4 text-center">
+        <div class="container py-4">
             <CommentComponent/>
         </div>
     </section>

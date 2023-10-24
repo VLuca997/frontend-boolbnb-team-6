@@ -13,7 +13,7 @@ export default {
         <div class="container">
             <h1 class="title_position text-white"><strong>AGGIUNGI IL TUO APPARTAMENTO!</strong></h1>
     
-            <a href="#" class="btn btn-light btn-lg mt-5 btn_position">AGGIUNGI</a>
+            <a href="http://127.0.0.1:8000" class="btn btn-light btn-lg mt-5 btn_position">AGGIUNGI</a>
         </div>
     </div>
     
