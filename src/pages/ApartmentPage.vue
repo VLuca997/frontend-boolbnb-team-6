@@ -32,7 +32,8 @@ export default {
     },
 
     mounted() {
-     console.log(window.auth);
+        
+        this.scrollToTop ()
     },
 
     created() {
@@ -44,10 +45,15 @@ export default {
     },
 
     methods: {
+
+        scrollToTop() {
+            window.scrollTo(0, 0);
+        },
+
         sendMessage() {
 
             if(this.sender_name && this.sender_email && this.content){
-                
+
                 let data = {
                 sender_name: this.sender_name,
                 sender_email: this.sender_email,
@@ -179,25 +185,6 @@ export default {
             </button>
         </div>
 
-
-
-        <!-- <div class="row images_container">
-
-            <div class="col-12 col-lg-6 cover_img">
-                <img class="img-fluid rounded" :src="'http://127.0.0.1:8000/storage/'+ apartment.cover_img" alt="Cover img">
-            </div>
-
-            <div class="col-12 col-lg-6">
-                <div class="row picture_img">
-                    <div class="col-12 col-lg-6 single_picture" v-for="picture in apartment.pictures" :key="picture.id">
-                        <img class="img-fluid rounded " :src="'http://127.0.0.1:8000/storage/'+ picture.img_url " alt="">
-                    </div>
-                </div>
-            </div>
-
-        </div> -->
-
-
         <div class="row py-2">
             <div class="col-sm-12 col-lg-8">
                 <ul>
@@ -261,7 +248,7 @@ export default {
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
                         </div>
                     </div>
-               
+
                 </div>
             </div>
         </div>
