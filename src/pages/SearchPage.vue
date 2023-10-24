@@ -149,7 +149,7 @@ export default {
                 </div>
                 <input class="col " type="text" hidden v-model="store.searchQuery" />
             </div>
-            <div class="col-2">
+            <div class="col-2 pt-2">
                 <select class="form-select" aria-label="Distanza" v-model="distance">
                     <option value="" disabled selected>Seleziona la distanza</option>
                     <option value="10">10 Km</option>
@@ -238,6 +238,6 @@ export default {
 <style lang="scss" scoped>
 .no_app {
     padding: 100px 0;
-    margin-bottom: 252px;
+    margin-bottom: 50px;
 }
 </style>

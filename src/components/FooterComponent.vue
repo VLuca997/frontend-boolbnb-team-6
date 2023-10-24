@@ -51,9 +51,9 @@
     </div> -->
 
 
-
-    <div class="container-fluid h-100 footer-size  position-relative">
-        <div class="row  text-center   ">
+    <div class="my_footer">
+        <div class="container h-100 footer-size  position-relative">
+        <div class="row  text-center">
             <div class="col-12 col-md-4  ">
                <div>
                     <h2 class="pt-4 text-light">Contattaci</h2>
@@ -158,45 +158,47 @@
 
         </div>
     </div>
+    </div>
+    
 
 
 </template>
 
 <style lang="scss" scoped>
-    .col-12 {
+    .my_footer {
     background-color: black;
     }
-    .logo-footer{
-        height: 100%;
-        width: 100%;
-        bottom: 0;
-    }
+//     .logo-footer{
+//         height: 100%;
+//         width: 100%;
+//         bottom: 0;
+//     }
 
-    ul li {
-        // text-decoration: none;
-        list-style: none;
-        padding: 0;
-    }
+     ul li {
+          text-decoration: none;
+         list-style: none;
+         padding: 0;
+     }
 
-    a{
-        text-decoration: none;
-        color: white;
-    }
-
-
+     a{
+         text-decoration: none;
+         color: white;
+     }
 
 
-    .footer-size {
-    max-height: 100px; /* Altezza massima in modalità desktop */
-    height: auto; /* Crescita dinamica in modalità mobile */
-}
 
-.logo-footer {
-    height: 100%; /* Altezza massima del logo del footer */
-}
 
-i{
-    font-size: 30px;
-}
+//     .footer-size {
+//     max-height: 100px; /* Altezza massima in modalità desktop */
+//     height: auto; /* Crescita dinamica in modalità mobile */
+// }
+
+// .logo-footer {
+//     height: 100%; /* Altezza massima del logo del footer */
+// }
+
+// i{
+//     font-size: 30px;
+// }
 
 </style>
