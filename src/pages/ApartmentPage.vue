@@ -18,7 +18,7 @@ export default {
             apartment_id: '',
             sender_name: '',
             sender_email: '',
-            object: '',
+            object: "Oggetto dell'email",
             content :'',
             sentSuccess: false,
             isSending: false,
