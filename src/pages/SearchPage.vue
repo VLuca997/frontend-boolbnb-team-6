@@ -154,7 +154,7 @@ export default {
                     <option value="" disabled selected>Seleziona la distanza</option>
                     <option value="10">10 Km</option>
                     <option value="20">20 Km</option>
-                    <option value="1000">1000 Km</option>
+                    <option value="30">30 Km</option>
                 </select>
             </div>
         </div>
