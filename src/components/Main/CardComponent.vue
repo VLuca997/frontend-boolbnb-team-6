@@ -26,9 +26,14 @@ export default {
     
     <div class="position-relative mobile_size">
         <!-- IMG -->
-        <router-link :to="{name: 'apartment', params: {slug:slug}}">
+        <div class="component_container">
+            <router-link :to="{name: 'apartment', params: {slug:slug}}">
             <img :src="'http://127.0.0.1:8000/storage/'+ cover_img " class="img-card rounded d-block shadoww_img" alt="...">
-        </router-link> 
+            </router-link> 
+            <div class="premium_badge">
+                    Premium
+            </div>
+        </div>
         <!-- CONTAINER INFO -->
         <div class="container_ position_container p-2 rounded shadoww_container">
             <p class="fst-italic">{{ address }} </p>
@@ -66,6 +71,29 @@ export default {
         box-shadow: 3px 3px 5px rgb(0, 0, 0, .5);
         transition: .3s;
         object-fit: cover;
+    }
+
+    .component_container {
+        position: relative;
+
+        &:hover{
+            .premium_badge {
+            transform: translateY(-10px);
+        }
+        }
+        .premium_badge {
+            position: absolute;
+            z-index: 99;
+            left: 0px;
+            top: 0px;
+            padding: 2px 5px;
+            background-color: #F6AE2D;
+            border: 1px solid #F6AE2D;
+            border-bottom-right-radius: 10px;
+            border-top-left-radius: 5px;
+            transition: 0.3s;
+            
+        }
     }
 
     .img-card:hover{
