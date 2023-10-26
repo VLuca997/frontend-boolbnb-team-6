@@ -152,9 +152,9 @@ export default {
             <div class="col-2 pt-2">
                 <select class="form-select" aria-label="Distanza" v-model="distance">
                     <option value="" disabled selected>Seleziona la distanza</option>
+                    <option value="1">1 Km</option>
                     <option value="10">10 Km</option>
                     <option value="20">20 Km</option>
-                    <option value="30">30 Km</option>
                 </select>
             </div>
         </div>
@@ -210,6 +210,9 @@ export default {
     
     <div class="container text-center py-5 my-container">
         <div class="row"  v-if="store.apartments.length >= 1">
+            <h5 class="text-start py-3">
+                {{ store.apartments.length }} Risultati
+            </h5>
             <div class="col-sm-12 col-md-6 col-lg-3" v-for="apartment in store.apartments" :key="apartment.id">
                 <CardComponent
                 :title="apartment.title"

@@ -84,6 +84,7 @@ export default {
         position: relative;
         bottom: 50px;
         left: 25px;
+        height: 215px;
     }
 
     .position_price{
