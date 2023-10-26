@@ -21,6 +21,7 @@ export default {
             services: [],
             selectedServices: [],
             loading: false,
+            today: null,
             apiKey: 'BxLvW0WHQgAEf3K4FogUXlvUV2qjlM8J',
             searchQuery: '',
             options: {
@@ -70,6 +71,7 @@ export default {
 
     created() {
         this.getAllServices();
+        this.today = new Date();
     },
 
     methods: {
@@ -125,6 +127,11 @@ export default {
                     
                     store.apartments = response.data.results;
                     this.loading = false;
+
+                     // Trasforma end_date in oggetti Date
+                    store.apartments.forEach(apartment => {
+                        apartment.end_date = new Date(apartment.end_date);
+                    });
                 }
                 else {
                     store.apartments = [];
@@ -214,18 +221,23 @@ export default {
                 {{ store.apartments.length }} Risultati
             </h5>
             <div class="col-sm-12 col-md-6 col-lg-3" v-for="apartment in store.apartments" :key="apartment.id">
-                <CardComponent
-                :title="apartment.title"
-                :slug="apartment.slug"
-                :price_per_night="parseFloat(apartment.price_per_night)"
-                :rooms_number="parseFloat(apartment.rooms_number)"
-                :beds_number="parseFloat(apartment.beds_number)"
-                :bathrooms_number="parseFloat(apartment.bathrooms_number)"
-                :square_meters="parseFloat(apartment.square_meters)"
-                :address="apartment.address"
-                :cover_img="apartment.cover_img"
-                :description="apartment.description"
-            />
+                <div class="component_container">
+                    <div class="premium_badge" v-if="apartment.end_date >= today"> 
+                        Premium
+                    </div> 
+                    <CardComponent
+                    :title="apartment.title"
+                    :slug="apartment.slug"
+                    :price_per_night="parseFloat(apartment.price_per_night)"
+                    :rooms_number="parseFloat(apartment.rooms_number)"
+                    :beds_number="parseFloat(apartment.beds_number)"
+                    :bathrooms_number="parseFloat(apartment.bathrooms_number)"
+                    :square_meters="parseFloat(apartment.square_meters)"
+                    :address="apartment.address"
+                    :cover_img="apartment.cover_img"
+                    :description="apartment.description"
+                    />
+                </div>
             </div>
         </div>
        <div v-if="store.apartments.length === 0 && !loading" class="no_app">
@@ -242,5 +254,21 @@ export default {
 .no_app {
     padding: 100px 0;
     margin-bottom: 50px;
+}
+
+.component_container {
+    position: relative;
+
+    .premium_badge {
+        position: absolute;
+        z-index: 99;
+        left: 10px;
+        top: 5px;
+        padding: 2px 5px;
+        background-color: #F6AE2D;
+        border: 1px solid #F6AE2D;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
 }
 </style>

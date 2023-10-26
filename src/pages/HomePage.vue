@@ -14,6 +14,7 @@ export default {
         return{
             allApartments: [],
             randomApartmnets: [],
+            today: null,
         }
     },
 
@@ -26,7 +27,7 @@ export default {
 
     created() {
         this.getAllApartments();
-        this.getRandomApartments();
+        this.today = new Date();
     },
 
     methods: {
@@ -37,23 +38,16 @@ export default {
             axios.get('http://127.0.0.1:8000/api/apartments')
                 .then((response) => {
                     this.allApartments = response.data.results;
+
+                    // Trasforma end_date in oggetti Date
+                    this.allApartments.forEach(apartment => {
+                        apartment.end_date = new Date(apartment.end_date);
+                    });
                 })
                 .catch((error) => {
                     console.error('Errore nella richiesta:', error);
                 });
         },
-
-        //Prenti tutti appartamenti
-        getRandomApartments() {
-
-            axios.get('http://127.0.0.1:8000/api/random-apartments')
-                .then((response) => {
-                    this.randomApartmnets = response.data.results;
-                })
-                .catch((error) => {
-                    console.error('Errore nella richiesta:', error);
-                });
-},
     }
 }
 </script>
@@ -66,44 +60,26 @@ export default {
     <section>
         <div class="container py-4 px-5 px-sm-0">
             <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-3" v-for="apartment in this.allApartments" :key="apartment.id">
-                <div class="component_container">
-                    <div class="premium_badge">
-                        Premium
+                <div class="col-sm-12 col-md-6 col-lg-3" v-for="apartment in this.allApartments" :key="apartment.id">
+                    <div class="component_container">
+                        <div class="premium_badge" v-if="apartment.end_date >= today"> 
+                            Premium
+                        </div> 
+                        <CardComponent
+                        :title="apartment.title"
+                        :slug="apartment.slug"
+                        :price_per_night="parseFloat(apartment.price_per_night)"
+                        :rooms_number="parseFloat(apartment.rooms_number)"
+                        :beds_number="parseFloat(apartment.beds_number)"
+                        :bathrooms_number="parseFloat(apartment.bathrooms_number)"
+                        :square_meters="parseFloat(apartment.square_meters)"
+                        :address="apartment.address"
+                        :cover_img="apartment.cover_img"
+                        :description="apartment.description"
+                        />
                     </div>
-                    <CardComponent
-                    :title="apartment.title"
-                    :slug="apartment.slug"
-                    :price_per_night="parseFloat(apartment.price_per_night)"
-                    :rooms_number="parseFloat(apartment.rooms_number)"
-                    :beds_number="parseFloat(apartment.beds_number)"
-                    :bathrooms_number="parseFloat(apartment.bathrooms_number)"
-                    :square_meters="parseFloat(apartment.square_meters)"
-                    :address="apartment.address"
-                    :cover_img="apartment.cover_img"
-                    :description="apartment.description"
-                    />
-                </div>
-                
-            </div>
-
-            <div class="row">
-                <div class="col-sm-12 col-md-6 col-lg-3" v-for="apartment in this.randomApartmnets" :key="apartment.id">
-                    <CardComponent
-                    :title="apartment.title"
-                    :slug="apartment.slug"
-                    :price_per_night="parseFloat(apartment.price_per_night)"
-                    :rooms_number="parseFloat(apartment.rooms_number)"
-                    :beds_number="parseFloat(apartment.beds_number)"
-                    :bathrooms_number="parseFloat(apartment.bathrooms_number)"
-                    :square_meters="parseFloat(apartment.square_meters)"
-                    :address="apartment.address"
-                    :cover_img="apartment.cover_img"
-                    :description="apartment.description"
-                    />
                 </div>
             </div>
-        </div>
         </div>
     </section>
 

@@ -56,6 +56,11 @@ export default {
                 // Aggiorna gli appartamenti nello store
                 store.apartments = response.data.results;
 
+                // Trasforma end_date in oggetti Date
+                store.apartments.forEach(apartment => {
+                        apartment.end_date = new Date(apartment.end_date);
+                    });
+
                 // Salva address per la pagina di ricerca avanzata
                 store.searchQuery = this.searchQuery;
 
