@@ -30,9 +30,9 @@ export default {
             <router-link :to="{name: 'apartment', params: {slug:slug}}">
             <img :src="'http://127.0.0.1:8000/storage/'+ cover_img " class="img-card rounded d-block shadoww_img" alt="...">
             </router-link> 
-            <div class="premium_badge">
+            <!-- <div class="premium_badge">
                     Premium
-            </div>
+            </div> -->
         </div>
         <!-- CONTAINER INFO -->
         <div class="container_ position_container p-2 rounded shadoww_container">
