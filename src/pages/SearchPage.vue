@@ -220,7 +220,7 @@ export default {
             <h5 class="text-start py-3">
                 {{ store.apartments.length }} Risultati
             </h5>
-            <div class="col-sm-12 col-md-6 col-lg-3" v-for="apartment in store.apartments" :key="apartment.id">
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3" v-for="apartment in store.apartments" :key="apartment.id">
                 <div class="component_container">
                     <div class="premium_badge" v-if="apartment.end_date >= today"> 
                         Premium

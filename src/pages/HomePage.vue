@@ -60,43 +60,26 @@ export default {
     <section>
         <div class="container py-4 px-5 px-sm-0">
             <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-3" v-for="apartment in this.allApartments" :key="apartment.id">
-                <div class="component_container">
-                    <div class="premium_badge" v-if="apartment.end_date >= today"> 
-                        Premium
-                    </div> 
-                    <CardComponent
-                    :title="apartment.title"
-                    :slug="apartment.slug"
-                    :price_per_night="parseFloat(apartment.price_per_night)"
-                    :rooms_number="parseFloat(apartment.rooms_number)"
-                    :beds_number="parseFloat(apartment.beds_number)"
-                    :bathrooms_number="parseFloat(apartment.bathrooms_number)"
-                    :square_meters="parseFloat(apartment.square_meters)"
-                    :address="apartment.address"
-                    :cover_img="apartment.cover_img"
-                    :description="apartment.description"
-                    />
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3" v-for="apartment in this.allApartments" :key="apartment.id">
+                    <div class="component_container">
+                        <div class="premium_badge" v-if="apartment.end_date >= today"> 
+                            Premium
+                        </div> 
+                        <CardComponent
+                        :title="apartment.title"
+                        :slug="apartment.slug"
+                        :price_per_night="parseFloat(apartment.price_per_night)"
+                        :rooms_number="parseFloat(apartment.rooms_number)"
+                        :beds_number="parseFloat(apartment.beds_number)"
+                        :bathrooms_number="parseFloat(apartment.bathrooms_number)"
+                        :square_meters="parseFloat(apartment.square_meters)"
+                        :address="apartment.address"
+                        :cover_img="apartment.cover_img"
+                        :description="apartment.description"
+                        />
+                    </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-sm-12 col-md-6 col-lg-3" v-for="apartment in this.randomApartmnets" :key="apartment.id">
-                    <CardComponent
-                    :title="apartment.title"
-                    :slug="apartment.slug"
-                    :price_per_night="parseFloat(apartment.price_per_night)"
-                    :rooms_number="parseFloat(apartment.rooms_number)"
-                    :beds_number="parseFloat(apartment.beds_number)"
-                    :bathrooms_number="parseFloat(apartment.bathrooms_number)"
-                    :square_meters="parseFloat(apartment.square_meters)"
-                    :address="apartment.address"
-                    :cover_img="apartment.cover_img"
-                    :description="apartment.description"
-                    />
-                </div>
-            </div>
-        </div>
         </div>
     </section>
 
