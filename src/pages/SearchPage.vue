@@ -241,7 +241,12 @@ export default {
             </div>
         </div>
        <div v-if="store.apartments.length === 0 && !loading" class="no_app">
-                Nessun appartamento trovato!
+                <h4>
+                    Nessun appartamento trovato!
+                </h4>
+                <p>
+                    Inserisci nuovi parametri di ricerca!
+                </p>
         </div>
         <div v-if="loading" class="no_app">
                 <LoaderComponent/>
