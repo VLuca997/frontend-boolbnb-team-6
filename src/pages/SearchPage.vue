@@ -210,7 +210,7 @@ export default {
             </div>
         </div>
         <div class="row">
-            <button class="btn col-6 m-auto my-3 btn-primary" @click="geocodeAndSearch">Cerca</button>
+            <button class="btn col-4 m-auto my-3 btn-primary" @click="geocodeAndSearch">Cerca</button>
         </div>
         
     </div>
