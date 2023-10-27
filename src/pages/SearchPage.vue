@@ -150,14 +150,14 @@ export default {
 <template>
     <div class="container w-75 ">
         <div class="row text-center align-items-center">
-            <div class="col-10">
+            <div class="col-12 col-md-10">
                 <div class="py-3 rounded" ref="searchBoxContainer">
         
                 </div>
                 <input class="col " type="text" hidden v-model="store.searchQuery" />
             </div>
-            <div class="col-2 pt-2">
-                <select class="form-select" aria-label="Distanza" v-model="distance">
+            <div class="col-12 col-md-2 pt-2">
+                <select class="form-select py-2" aria-label="Distanza" v-model="distance">
                     <option value="" disabled selected>Seleziona la distanza</option>
                     <option value="1">1 Km</option>
                     <option value="10">10 Km</option>
@@ -166,18 +166,23 @@ export default {
             </div>
         </div>
            
-        <div class="row m-auto">
-            <div class="row m-auto">
-                <input class="form-control me-2 col" v-model="square_meters" placeholder="Metratura" />
-                <input class="form-control me-2 col" v-model="rooms_number" placeholder="Stanze" />
-                <input class="form-control me-2 col" v-model="beds_number" placeholder="Letti" />
-                <input class="form-control col" v-model="bathrooms_number" placeholder="Bagni" />
-                <!-- <input class="form-control mx-1 col" v-model="services" placeholder="Servizi" /> -->
+        <div class="row mt-2 gx-3">
+            <div class="col-12 col-md-3 mb-2">
+                <input class="form-control" v-model="square_meters" placeholder="Metratura" />
+            </div>
+            <div class="col-12 col-md-3 mb-2">
+                <input class="form-control" v-model="rooms_number" placeholder="Stanze" />
+            </div>
+            <div class="col-12 col-md-3 mb-2">
+                <input class="form-control" v-model="beds_number" placeholder="Letti" />
+            </div>
+            <div class="col-12 col-md-3 mb-2">
+                <input class="form-control" v-model="bathrooms_number" placeholder="Bagni" />
             </div>
         </div>
 
         <div class="row">
-            <div class="accordion py-2 col-8 m-auto" id="accordionExample">
+            <div class="accordion py-2 col-12 col-md-8 m-auto" id="accordionExample">
   
                 <div class="accordion-item ">
                     <h2 class="accordion-header">
@@ -188,21 +193,20 @@ export default {
                     <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <div class="row">
-                                <div class="col" v-for="service in services" :key="service.id">
-                                    <div class="form-check">
-                                    <input
-                                        class="form-check-input"
-                                        type="checkbox"
-                                        :value="service.id"
-                                        v-model="selectedServices"
-                                        :id="service.id"
-                                    />
-                                    <label class="form-check-label" :for="service.id">
-                                        {{ service.name }}
-                                    </label>
+                                    <div class="col" v-for="service in services" :key="service.id">
+                                        <div class="form-check">
+                                        <input
+                                            class="form-check-input"
+                                            type="checkbox"
+                                            :value="service.id"
+                                            v-model="selectedServices"
+                                            :id="service.id"
+                                        />
+                                        <label class="form-check-label" :for="service.id">
+                                            {{ service.name }}
+                                        </label>
+                                    </div>
                                 </div>
-                                </div>
-                                
                             </div>
                         </div>
                     </div>
