@@ -90,7 +90,7 @@
 
                             <li class="py-2">
 
-                                <a href="#">
+                                <a href="https://www.instagram.com/">
                                 
                                     <i class="fa-brands fa-instagram"></i>
                             
@@ -100,7 +100,7 @@
 
                             <li class="py-2">
 
-                                <a href="#">
+                                <a href="https://twitter.com/?lang=it">
 
                                     <i class="fa-brands fa-twitter"></i>
 
@@ -110,7 +110,7 @@
 
                             <li class="py-2">
 
-                                <a href="#">
+                                <a href="https://www.facebook.com/?locale=it_IT">
 
                                     <i class="fa-brands fa-facebook"></i>
                                 </a>
@@ -129,20 +129,20 @@
 
                         <ul class="d-inline-block px-3">
 
-                            <li class="py-2"><a href="#">
+                            <li class="py-2"><a href="https://www.youtube.com/">
                                 <i class="fa-brands fa-youtube"></i>
                             </a>
 
                         </li>
 
-                            <li class="py-2"><a href="#">
+                            <li class="py-2"><a href="https://github.com/">
                                 <i class="fa-brands fa-github"></i>
                             </a>
 
                         </li>
 
                             <li class="py-2">
-                                <a href="#">
+                                <a href="https://discord.com/">
                                 <i class="fa-brands fa-discord"></i>
                             </a>
 
