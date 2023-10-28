@@ -150,14 +150,15 @@ export default {
 <template>
     <div class="container w-75 ">
         <div class="row text-center align-items-center">
-            <div class="col-12 col-md-10">
-                <div class="py-3 rounded" ref="searchBoxContainer">
-        
+            <h5 class="text-start fw-bold py-0">Ricerca gli appartamenti per Indirizzo o Città!</h5>
+            <div class="col-12 col-md-10 pb-2 ">
+                <div class="rounded" ref="searchBoxContainer">
+                    
                 </div>
                 <input class="col " type="text" hidden v-model="store.searchQuery" />
             </div>
-            <div class="col-12 col-md-2 pt-2">
-                <select class="form-select py-2" aria-label="Distanza" v-model="distance">
+            <div class="col-12 col-md-2 pb-1">
+                <select class="form-select " aria-label="Distanza" v-model="distance">
                     <option value="" disabled selected>Seleziona la distanza</option>
                     <option value="1">1 Km</option>
                     <option value="10">10 Km</option>

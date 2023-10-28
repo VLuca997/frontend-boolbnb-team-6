@@ -141,7 +141,7 @@ export default {
 
 <template>
 
-    <div class="container px-5" v-if="!loading">
+    <div class="container px-3" v-if="!loading">
 
         <h1 class="py-3">
             {{ apartment.title }}
@@ -187,11 +187,11 @@ export default {
 
         <div class="row py-2">
             <div class="col-sm-12 col-lg-8">
-                <ul>
-                    <li class="d-inline-block p-2"><a href="#description">Descrizione</a></li>
-                    <li class="d-inline-block p-2"><a href="#details">Dettagli appartamento</a></li>
-                    <li class="d-inline-block p-2"><a href="#services">Servizi</a></li>
-                    <li class="d-inline-block p-2"><a href="#position">Posizione</a></li>
+                <ul class="padding-href-bar">
+                    <li class="d-inline-block"><a href="#description">Descrizione</a></li>
+                    <li class="d-inline-block"><a href="#details">Dettagli appartamento</a></li>
+                    <li class="d-inline-block"><a href="#services">Servizi</a></li>
+                    <li class="d-inline-block"><a href="#position">Posizione</a></li>
                 </ul>
             </div>
             <div class="col-md-12 col-lg-4 text-lg-end">
@@ -275,16 +275,16 @@ export default {
                 Dettagli Appartamento
             </h4>
             <div class="col-sm-12 col-md-6 col-lg-3">
-                <span class="p-2"><i class="fa-solid fa-bath"></i></span>
+                <span class="px-2"><i class="fa-solid fa-bath"></i></span>
                 Bagni: {{ apartment.bathrooms_number }}</div>
             <div class="col-sm-12 col-md-6 col-lg-3">
-                <span class="p-2"><i class="fa-solid fa-bed"></i></span>
+                <span class="px-2"><i class="fa-solid fa-bed"></i></span>
                 Letti: {{ apartment.beds_number }}</div>
             <div class="col-sm-12 col-md-6 col-lg-3">
-                <span class="p-2"><i class="fa-solid fa-door-open"></i></span>
+                <span class="px-2"><i class="fa-solid fa-door-open"></i></span>
                 Stanze: {{ apartment.rooms_number }}</div>
             <div class="col-sm-12 col-md-6 col-lg-3">
-                <span class="p-2"><i class="fa-solid fa-maximize"></i></span>
+                <span class="px-2"><i class="fa-solid fa-maximize"></i></span>
                 Metri Quadri: {{ apartment.square_meters }}</div>
         </div>
 
@@ -305,15 +305,16 @@ export default {
 
         <hr>
 
-        <div class="row py-3">
-            <h4 class="pb-4" id="position">
+        <div class="row py-3 mb-4">
+            <h4 class="py-1  " id="position">
                 Posizione Appartamento
             </h4>
-            <MapComponent/>
-            <h4 class="py-3">{{ apartment.address }}</h4>
-            <!-- <div class="col mb-4">
-                <img src="https://www.centrostoricocb.it/immagini/IMM/pianta-borgo%20900.jpg" alt="">
-            </div> -->
+            <h4 class="pb-3 address-show-apprtm-show">{{ apartment.address }}</h4>
+            <div>
+
+                <MapComponent/>
+            </div>
+            
         </div>
 
 
@@ -347,6 +348,10 @@ export default {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+.padding-href-bar > li{
+    padding-right: 15px;
 }
 
     ul{
@@ -447,6 +452,9 @@ export default {
         .icon {
             width: 40px;
         }
+    }
+    .address-show-apprtm-show {
+        color: #F6AE2D;
     }
 
     .loader {
