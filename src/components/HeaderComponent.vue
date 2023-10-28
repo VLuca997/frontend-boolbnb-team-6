@@ -16,9 +16,9 @@
     <div>
         <nav class="navbar navbar-expand-lg bg-body-white">
         <div class="container-fluid">
-            <a class="navbar-brand p-0" href="#">
+            <a class="navbar-brand p-0" href="http://localhost:5173">
             <div class="d-flex align-items-center">
-                <h2 class="px-3 bg_logo shadoww">
+                <h2 class="px-3 bg_logo shadoww" >
                 Bool BNB
                 </h2>
             </div>
