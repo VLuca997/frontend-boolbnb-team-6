@@ -36,10 +36,10 @@
                 </li>
             </ul>
             <a href="http://127.0.0.1:8000" class="btn btn-outline-warning m-1">
-                Accedi o cambia Utente!
+                Accedi
             </a>
             <a href="http://127.0.0.1:8000/register" class="btn btn-outline-success m-1">
-                Registrati o accedi alla Dashboard!
+                Registrati
             </a>
             </div>
         </div>
